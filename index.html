@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8'>
+		<title>Busca sequencial versus binária</title>
+		<link rel='stylesheet' href='css/style.css'>
+		<link rel='stylesheet' href='css/animate.css'>
+	<head>
+	<body>
+		<div class='container'>
+			<h1 class='title'><a href='index.html'>Busca sequencial versus binária</a></h1>
+			<form id='form'>
+				<label>Insira o número de cartas (4 a 13):</label><br>
+				<input type='text' id='size'>
+				<select id='searched-card'>
+					<option value='' disabled='' selected=''>O que está procurando?</option>
+					<option value='rei'>Rei</option>
+					<option value='dama'>Dama</option>
+					<option value='valete'>Valete</option>
+					<option value='as'>Ás</option>
+					<option value='2'>2</option>
+					<option value='3'>3</option>
+					<option value='4'>4</option>
+					<option value='5'>5</option>
+					<option value='6'>6</option>
+					<option value='7'>7</option>
+					<option value='8'>8</option>
+					<option value='9'>9</option>
+					<option value='10'>10</option>
+				</select>
+				<select id='selected-suit'>
+					<option value=''  disabled='' selected=''>Selecione o naipe</option>
+					<option value='espadas'>Espadas</option>
+					<option value='paus'>Paus</option>
+					<option value='copas'>Copas</option>
+					<option value='ouro'>Ouro</option>
+					<option value='misto' disabled=''>Misto (Structs)</option>
+				</select>
+				<select id='type-of-search'>
+					<option value='' disabled='' selected=''>Selecione o tipo de busca</option>
+					<option value='sequencial-o'>Sequencial ordenada</option>
+					<option value='sequencial-d'>Sequencial desordenada</option>
+					<option value='binaria'>Binária<option>
+				</select>
+				<input type='submit' id='send-scenario' value='Go'>
+			</form>
+			<img id='playing-cards' src='img/cards/playing-cards.png'>
+			<div class='cards'></div>
+		</div>
+	<script src='assets/cards.json'></script>
+	<script src='js/feedback.js'></script>
+	<script src='js/sequential-search.js'></script>
+	<script src='js/binary-search.js'></script>
+	<script src='js/animation.js'></script>
+	</body>
+</html>

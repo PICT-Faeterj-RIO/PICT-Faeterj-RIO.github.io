@@ -1,0 +1,55 @@
+body {
+	width: 800px;
+	margin: 0 auto
+}
+
+h1 {
+	text-align: center
+}
+
+input, select {
+	padding: 4px
+}
+
+input {
+	width: 55px
+}
+
+label {
+	font-size: 18px
+}
+
+#playing-cards {
+	display: block;
+	margin: 0 auto;
+	width: 400px
+}
+
+.card-padding {
+	padding: 16px
+}
+
+.card-size {
+	width: 68px
+}
+
+.cards {
+	display: table;
+	margin: 0 auto
+}
+
+.hide {
+	display: none
+}
+
+.show {
+	display: inline-block
+}
+
+.opacity {
+	filter: brightness(50%);
+	-webkit-filter: brightness(50%);
+	-moz-filter: brightness(50%);
+	-o-filter: brightness(50%);
+	-ms-filter: brightness(50%);
+}
