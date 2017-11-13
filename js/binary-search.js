@@ -62,7 +62,7 @@ var binary = {
         } else {
           carta = ANIMATION.naipe[ANIMATION.cenario[1] - meio][1];
           src = ANIMATION.naipe[ANIMATION.cenario[1] - meio][0];
-          console.log('Carta: ', x);
+          console.log('Carta: ', carta);
           console.log('Meio do naipe: ', meio);
         }
 
