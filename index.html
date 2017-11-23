@@ -12,6 +12,20 @@
 			<form id='form'>
 				<label>Insira o número de cartas (4 a 13):</label><br>
 				<input type='text' id='size'>
+				<select id='type-of-search' onChange='javascript:restringirCarta();'>
+					<option value='' disabled='' selected=''>Selecione o tipo de busca</option>
+					<option value='sequencial-o'>Sequencial ordenada</option>
+					<option value='sequencial-d'>Sequencial desordenada</option>
+					<option value='binaria'>Binária<option>
+				</select>
+				<select id='selected-suit'>
+					<option value=''  disabled='' selected=''>Selecione o naipe</option>
+					<option value='espadas'>Espadas</option>
+					<option value='paus'>Paus</option>
+					<option value='copas'>Copas</option>
+					<option value='ouro'>Ouro</option>
+					<option value='misto' disabled=''>Misto (Structs)</option>
+				</select>
 				<select id='searched-card'>
 					<option value='' disabled='' selected=''>O que está procurando?</option>
 					<option value='rei'>Rei</option>
@@ -27,20 +41,6 @@
 					<option value='8'>8</option>
 					<option value='9'>9</option>
 					<option value='10'>10</option>
-				</select>
-				<select id='selected-suit'>
-					<option value=''  disabled='' selected=''>Selecione o naipe</option>
-					<option value='espadas'>Espadas</option>
-					<option value='paus'>Paus</option>
-					<option value='copas'>Copas</option>
-					<option value='ouro'>Ouro</option>
-					<option value='misto' disabled=''>Misto (Structs)</option>
-				</select>
-				<select id='type-of-search' onChange='javascript:restringirCarta();'>
-					<option value='' disabled='' selected=''>Selecione o tipo de busca</option>
-					<option value='sequencial-o'>Sequencial ordenada</option>
-					<option value='sequencial-d'>Sequencial desordenada</option>
-					<option value='binaria'>Binária<option>
 				</select>
 				<input type='submit' id='send-scenario' value='Go'>
 			</form>
