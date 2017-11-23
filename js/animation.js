@@ -135,4 +135,26 @@ function callback(data) {
     ANIMATION.jsonObj = data;
 }
 
+function restringirCarta() {
+  var selectedSearch = document.querySelector('#type-of-search')
+  .options[document.querySelector('#type-of-search').selectedIndex].value;
+  var select = document.querySelector('#searched-card');
+  if(selectedSearch == 'sequencial-o' || selectedSearch == 'binaria') {
+    for(var i = 0; i < select.options.length; i++) {
+      if(select.options[i].value == 'rei' || select.options[i].value == 'dama' ||
+         select.options[i].value == 'valete' || select.options[i].value == 'as') {
+            select.options[i].setAttribute('disabled', '');
+         }
+    }
+  } else {
+    for(var i = 0; i < select.options.length; i++) {
+      if(select.options[i].value == 'rei' || select.options[i].value == 'dama' ||
+         select.options[i].value == 'valete' || select.options[i].value == 'as') {
+            select.options[i].removeAttribute('disabled');
+         }
+    }
+  }
+
+}
+
 carregarJSON(callback);
