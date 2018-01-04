@@ -2,11 +2,10 @@
 var ANIMATION = {
     cartas: document.querySelector('.cards'),
     jsonObj: cards,
+    naipePraBinaria: [],
     cenario: 'undefined',
     naipe: 'undefined',
     indiceIncremental: 0,
-    indiceBinaria: 0,
-    listenerCount: 0,
     numCartas: 0,
     ultimaCartaClicada: 'undefined'
 }
@@ -46,12 +45,49 @@ function criarCartas() {
         cartaOculta.setAttribute('class', 'card-padding flipInX animated');
         ANIMATION.cartas.appendChild(cartaOculta);
     }
+
     if(ANIMATION.cenario[3] === 'binaria') {
-      var middle = ANIMATION.cartas.childNodes.length;
-      middle = Math.floor(middle/2);
-        setTimeout(function() {
-            ANIMATION.cartas.childNodes[middle].setAttribute('class', 'card-padding animated pulse infinite');
-        }, 500);
+      setTimeout(function(){
+        for(var i = 0; i < ANIMATION.cenario[0]; i++) {
+            ANIMATION.cartas.removeChild(ANIMATION.cartas.firstChild);
+        }
+      }, 1500);
+
+      var cartaExiste = document.querySelector('.cards').getAttribute('data-found');
+      setTimeout(function(){
+        for(var i = 0; i < ANIMATION.cenario[0]; i++) {
+          var cartaOculta = document.createElement('img');
+          var x = +ANIMATION.naipe[i][1];
+          var y = +ANIMATION.cenario[1];
+          if(x >= y && cartaExiste == 'false') {
+            cartaOculta.setAttribute('src', ANIMATION.naipe[i+1][0]);
+          } else {
+            cartaOculta.setAttribute('src', ANIMATION.naipe[i][0]);
+          }
+          cartaOculta.setAttribute('class', 'card-padding fadeIn animated card-size');
+          ANIMATION.cartas.appendChild(cartaOculta);
+        }
+      },1500);
+
+      setTimeout(function(){
+        for(var i = 0; i < ANIMATION.cenario[0]; i++) {
+            ANIMATION.cartas.removeChild(ANIMATION.cartas.firstChild);
+        }
+      }, 4500);
+
+      setTimeout(function(){
+        for (var i = 0; i < ANIMATION.cenario[0]; i++) {
+            var cartaOculta = document.createElement('img');
+            cartaOculta.setAttribute('src', 'img/cards/back.png');
+            cartaOculta.setAttribute('class', 'card-padding fadeIn animated');
+            ANIMATION.cartas.appendChild(cartaOculta);
+        }
+      }, 4500);
+
+      var meio = Math.floor((ANIMATION.cenario[0]-1)/2);
+      setTimeout(function() {
+        ANIMATION.cartas.childNodes[meio].setAttribute('class', 'card-padding animated pulse infinite');
+      }, 4500);
     }else {
       setTimeout(function() {
           ANIMATION.cartas.firstChild.setAttribute('class', 'card-padding animated pulse infinite');
@@ -61,17 +97,15 @@ function criarCartas() {
 
 function iniciarPesquisa(evt) {
     var cartaClicada = evt.target || evt.srcElement;
-    if (cartaClicada.className.indexOf('pulse') > 0) {
+    if(ANIMATION.cenario[3] === 'binaria') {
+      binary.search(cartaClicada);
+    } else if(cartaClicada.className.indexOf('pulse') > 0) {
         if (cartaClicada === ANIMATION.cartas.lastChild) {
-            ANIMATION.cartas.lastChild.setAttribute('id', 'lastValidCard');
+          ANIMATION.cartas.lastChild.setAttribute('id', 'lastValidCard');
         }
-        if (ANIMATION.cenario[3] === 'binaria') {
-            binary.search(cartaClicada);
-        } else {
-            sequential.type(cartaClicada);
-        }
+        sequential.type(cartaClicada);
     } else if (ANIMATION.ultimaCartaClicada === ANIMATION.cenario[1] &&
-      ANIMATION.numCartas === ANIMATION.cartas.childNodes.length
+        ANIMATION.numCartas === ANIMATION.cartas.childNodes.length
     ) {
         feedback.alreadyFound();
     } else if (document.querySelector('#lastValidCard') !== null) {
@@ -99,6 +133,18 @@ function obterNaipe() {
         naipe.push(naipeSelecionado[i]['valete']);
         naipe.push(naipeSelecionado[i]['as']);
     }
+
+    var cartaExiste = ANIMATION.cartas.getAttribute('data-found');
+    for(var i = 0; i < ANIMATION.cenario[0]; i++) {
+      ANIMATION.naipePraBinaria.push(naipe[i]);
+    }
+
+    var valor = +ANIMATION.cenario[1];
+    if(cartaExiste == 'false') {
+      ANIMATION.naipePraBinaria.splice(valor-2, 1);
+      ANIMATION.naipePraBinaria.push(naipe[ANIMATION.cenario[0]]);
+    }
+
     return naipe;
 }
 
@@ -111,6 +157,13 @@ function obterCenario() {
         document.querySelector('#type-of-search')
         .options[document.querySelector('#type-of-search').selectedIndex].value
     ];
+
+    getRandomInt(0, 2) === 0 ? ANIMATION.cartas.setAttribute('data-found', 'true') :
+    ANIMATION.cartas.setAttribute('data-found', 'false');
+    ANIMATION.cartas.setAttribute('data-first', 0);
+    ANIMATION.cartas.setAttribute('data-middle', Math.floor((cenario[0]-1)/2));
+    ANIMATION.cartas.setAttribute('data-last', cenario[0]-1);
+
     return cenario;
 }
 
@@ -155,6 +208,27 @@ function restringirCarta() {
     }
   }
 
+}
+
+window.document.onload = restringirCarta();
+
+document.querySelector('#form').addEventListener('submit', preload, false);
+
+
+var images = [];
+function preload() {
+  if(ANIMATION.cenario[3] == 'binaria') {
+    for(var i = 0; i < ANIMATION.cenario[0]; i++) {
+      images[i] = new Image();
+      images[i].src = ANIMATION.naipePraBinaria[i][0];
+    }
+  } else {
+    for(var i = 0; i < ANIMATION.cenario[0]; i++) {
+      images[i] = new Image();
+      images[i].src = ANIMATION.naipe[i][0];
+    }
+  }
+  console.log(images);
 }
 
 carregarJSON(callback);
