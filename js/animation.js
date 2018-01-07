@@ -2,7 +2,7 @@
 var ANIMATION = {
     cartas: document.querySelector('.cards'),
     jsonObj: cards,
-    naipePraBinaria: [],
+    naipePraOrdenada: [],
     cenario: 'undefined',
     naipe: 'undefined',
     indiceIncremental: 0,
@@ -33,7 +33,6 @@ function exibirCartas(evt) {
         criarCartas();
         ANIMATION.cartas.addEventListener('click', iniciarPesquisa, false);
     }
-    //console.log(evt.timeStamp);
     ANIMATION.indiceIncremental = 0;
     evt.preventDefault();
 }
@@ -53,19 +52,15 @@ function criarCartas() {
         }
       }, 1500);
 
+
+      // Revisar
       var cartaExiste = document.querySelector('.cards').getAttribute('data-found');
       setTimeout(function(){
         for(var i = 0; i < ANIMATION.cenario[0]; i++) {
-          var cartaOculta = document.createElement('img');
-          var x = +ANIMATION.naipe[i][1];
-          var y = +ANIMATION.cenario[1];
-          if(x >= y && cartaExiste == 'false') {
-            cartaOculta.setAttribute('src', ANIMATION.naipe[i+1][0]);
-          } else {
-            cartaOculta.setAttribute('src', ANIMATION.naipe[i][0]);
-          }
-          cartaOculta.setAttribute('class', 'card-padding fadeIn animated card-size');
-          ANIMATION.cartas.appendChild(cartaOculta);
+          var cartaASerMostrada = document.createElement('img');
+          cartaASerMostrada.setAttribute('src', ANIMATION.naipe[i][0]);
+          cartaASerMostrada.setAttribute('class', 'card-padding fadeIn animated card-size');
+          ANIMATION.cartas.appendChild(cartaASerMostrada);
         }
       },1500);
 
@@ -135,16 +130,18 @@ function obterNaipe() {
     }
 
     var cartaExiste = ANIMATION.cartas.getAttribute('data-found');
-    for(var i = 0; i < ANIMATION.cenario[0]; i++) {
-      ANIMATION.naipePraBinaria.push(naipe[i]);
-    }
 
     var valor = +ANIMATION.cenario[1];
     if(cartaExiste == 'false') {
-      ANIMATION.naipePraBinaria.splice(valor-2, 1);
-      ANIMATION.naipePraBinaria.push(naipe[ANIMATION.cenario[0]]);
+      naipe.splice(valor-2, 1);
+      naipe.push(naipe[ANIMATION.cenario[0]]);
     }
 
+    if(ANIMATION.cenario[3] != 'sequencial-d') {
+      var j = +ANIMATION.cenario[0];
+      naipe.splice(j);
+    }
+    console.log(naipe);
     return naipe;
 }
 
@@ -220,7 +217,7 @@ function preload() {
   if(ANIMATION.cenario[3] == 'binaria') {
     for(var i = 0; i < ANIMATION.cenario[0]; i++) {
       images[i] = new Image();
-      images[i].src = ANIMATION.naipePraBinaria[i][0];
+      images[i].src = ANIMATION.naipe[i][0];
     }
   } else {
     for(var i = 0; i < ANIMATION.cenario[0]; i++) {
@@ -228,7 +225,7 @@ function preload() {
       images[i].src = ANIMATION.naipe[i][0];
     }
   }
-  console.log(images);
+  //console.log(images);
 }
 
 carregarJSON(callback);

@@ -18,7 +18,7 @@ var feedback = {
       cartaVirada.setAttribute('class', 'card-padding card-size animated fadeIn');
       cartaVirada.setAttribute('id', 'lastValidCard');
       setTimeout(function() {
-          alert('Não é necessário continuar, pois ' + ANIMATION.naipe[i][1] + ' é maior do que a carta procurada :/, substituir por modal explicativo ...');
+          alert('Não é necessário continuar, pois ' + i + ' é maior do que a carta procurada :/, substituir por modal explicativo ...');
       }, 500);
   },
 
