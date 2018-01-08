@@ -3,6 +3,10 @@ var binary = {
     // needs to be implemented
   },
 
+  message: function message(string) {
+    alert(string);
+  },
+
   search: function(cartaClicada) {
 
     var conjuntoCartas = document.querySelector('.cards');
@@ -49,6 +53,9 @@ var binary = {
       setTimeout(function() {
         var x = ANIMATION.cartas.childNodes.length;
         var novoMeio = x == 1 ? 0 : Math.floor((x-1)/2);
+        if(typeof ANIMATION.cartas.childNodes[novoMeio] == 'undefined') {
+          binary.message('Carta não encontrada');
+        }
         ANIMATION.cartas.childNodes[novoMeio].className = 'card-padding card-size animated pulse infinite';
       }, 3000);
 
@@ -85,6 +92,9 @@ var binary = {
       setTimeout(function() {
         var x = ANIMATION.cartas.childNodes.length;
         var novoMeio = x == 1 ? 0 : Math.floor((x-1)/2);
+        if(typeof ANIMATION.cartas.childNodes[novoMeio] == 'undefined') {
+          binary.message('Carta não encontrada');
+        }
         ANIMATION.cartas.childNodes[novoMeio].className = 'card-padding card-size animated pulse infinite';
       }, 3000);
 
