@@ -1,5 +1,6 @@
 var feedback = {
   found: function(cartaVirada) {
+      ANIMATION.cartas.setAttribute('data-found', 'true');
       cartaVirada.setAttribute('class', 'card-padding card-size animated jello');
       setTimeout(function() {
           alert('Carta encontrada :), substituir por modal explicativo ...');
@@ -23,7 +24,6 @@ var feedback = {
   },
 
   continue: function (cartaVirada, cartaClicada) {
-      ANIMATION.ultimaCartaClicada = cartaVirada;
       setTimeout(function() {
           cartaClicada.nextSibling.setAttribute('class', 'card-padding animated pulse infinite');
           setTimeout(function() {

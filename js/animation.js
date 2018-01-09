@@ -2,19 +2,16 @@
 var ANIMATION = {
     cartas: document.querySelector('.cards'),
     jsonObj: cards,
-    naipePraOrdenada: [],
     cenario: 'undefined',
     naipe: 'undefined',
-    indiceIncremental: 0,
-    numCartas: 0,
-    ultimaCartaClicada: 'undefined'
 }
 
 document.querySelector('#form').addEventListener('submit', exibirCartas, false);
 
 function exibirCartas(evt) {
     ANIMATION.cenario = obterCenario();
-    ANIMATION.naipe = obterNaipe();
+    ANIMATION.naipe = obterNaipe(ANIMATION.cenario[2]);
+    ANIMATION.cartas.setAttribute('data-found', 'false');
     if (isNaN(ANIMATION.cenario[0]) || ANIMATION.cenario[0] < 4 || ANIMATION.cenario[0] > 13 ||
     ANIMATION.cenario[1] === '' || ANIMATION.cenario[2] === '' || ANIMATION.cenario[3] === '') {
         feedback.required();
@@ -52,9 +49,7 @@ function criarCartas() {
         }
       }, 1500);
 
-
-      // Revisar
-      var cartaExiste = document.querySelector('.cards').getAttribute('data-found');
+      var cartaExiste = document.querySelector('.cards').getAttribute('data-random');
       setTimeout(function(){
         for(var i = 0; i < ANIMATION.cenario[0]; i++) {
           var cartaASerMostrada = document.createElement('img');
@@ -92,6 +87,7 @@ function criarCartas() {
 
 function iniciarPesquisa(evt) {
     var cartaClicada = evt.target || evt.srcElement;
+    var encontrado = ANIMATION.cartas.getAttribute('data-found');
     if(ANIMATION.cenario[3] === 'binaria') {
       binary.search(cartaClicada);
     } else if(cartaClicada.className.indexOf('pulse') > 0) {
@@ -99,9 +95,7 @@ function iniciarPesquisa(evt) {
           ANIMATION.cartas.lastChild.setAttribute('id', 'lastValidCard');
         }
         sequential.type(cartaClicada);
-    } else if (ANIMATION.ultimaCartaClicada === ANIMATION.cenario[1] &&
-        ANIMATION.numCartas === ANIMATION.cartas.childNodes.length
-    ) {
+    } else if (encontrado == 'true') {
         feedback.alreadyFound();
     } else if (document.querySelector('#lastValidCard') !== null) {
         feedback.neverFound();
@@ -110,8 +104,8 @@ function iniciarPesquisa(evt) {
     }
 }
 
-function obterNaipe() {
-    var naipeSelecionado = ANIMATION.jsonObj[ANIMATION.cenario[2]];
+function obterNaipe(string) {
+    var naipeSelecionado = ANIMATION.jsonObj[string];
     var naipe = [];
     for (var i in naipeSelecionado) {
         naipe.push(naipeSelecionado[i][2]);
@@ -123,25 +117,31 @@ function obterNaipe() {
         naipe.push(naipeSelecionado[i][8]);
         naipe.push(naipeSelecionado[i][9]);
         naipe.push(naipeSelecionado[i][10]);
+        // dama = 11
         naipe.push(naipeSelecionado[i]['dama']);
+        // rei = 12
         naipe.push(naipeSelecionado[i]['rei']);
+        // valete = 13
         naipe.push(naipeSelecionado[i]['valete']);
+        // as = 14
         naipe.push(naipeSelecionado[i]['as']);
     }
 
-    var cartaExiste = ANIMATION.cartas.getAttribute('data-found');
+    if(ANIMATION.cartas.getAttribute('data-random')) {
+        var cartaExiste = ANIMATION.cartas.getAttribute('data-random');
 
-    var valor = +ANIMATION.cenario[1];
-    if(cartaExiste == 'false') {
-      naipe.splice(valor-2, 1);
-      naipe.push(naipe[ANIMATION.cenario[0]]);
+        var valor = +ANIMATION.cenario[1];
+        if(cartaExiste == 'false') {
+          naipe.splice(valor-2, 1);
+          naipe.push(naipe[ANIMATION.cenario[0]]);
+        }
+
+        if(ANIMATION.cenario[3] != 'sequencial-d') {
+          var j = +ANIMATION.cenario[0];
+          naipe.splice(j);
+        }
     }
 
-    if(ANIMATION.cenario[3] != 'sequencial-d') {
-      var j = +ANIMATION.cenario[0];
-      naipe.splice(j);
-    }
-    console.log(naipe);
     return naipe;
 }
 
@@ -155,8 +155,8 @@ function obterCenario() {
         .options[document.querySelector('#type-of-search').selectedIndex].value
     ];
 
-    getRandomInt(0, 2) === 0 ? ANIMATION.cartas.setAttribute('data-found', 'true') :
-    ANIMATION.cartas.setAttribute('data-found', 'false');
+    getRandomInt(0, 2) === 0 ? ANIMATION.cartas.setAttribute('data-random', 'true') :
+    ANIMATION.cartas.setAttribute('data-random', 'false');
     ANIMATION.cartas.setAttribute('data-first', 0);
     ANIMATION.cartas.setAttribute('data-middle', Math.floor((cenario[0]-1)/2));
     ANIMATION.cartas.setAttribute('data-last', cenario[0]-1);
@@ -209,23 +209,20 @@ function restringirCarta() {
 
 window.document.onload = restringirCarta();
 
-document.querySelector('#form').addEventListener('submit', preload, false);
-
-
-var images = [];
 function preload() {
-  if(ANIMATION.cenario[3] == 'binaria') {
-    for(var i = 0; i < ANIMATION.cenario[0]; i++) {
-      images[i] = new Image();
-      images[i].src = ANIMATION.naipe[i][0];
-    }
-  } else {
-    for(var i = 0; i < ANIMATION.cenario[0]; i++) {
-      images[i] = new Image();
-      images[i].src = ANIMATION.naipe[i][0];
+  var naipes = ['espadas', 'paus', 'copas', 'ouro'];
+  var resultado = [];
+  var images = [];
+  for(var i = 0; i < naipes.length; i++) {
+    resultado = obterNaipe(naipes[i]);
+    for(var j = 0; j < resultado.length; j++) {
+      images.push(new Image().src = resultado[j][0]);
     }
   }
   //console.log(images);
 }
+
+preload();
+
 
 carregarJSON(callback);

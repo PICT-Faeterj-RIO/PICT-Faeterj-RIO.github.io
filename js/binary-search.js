@@ -17,7 +17,6 @@ var binary = {
 
     var meioNoNaipe = +ANIMATION.naipe[meio][1];
     var cartaProcurada = +ANIMATION.cenario[1];
-    console.log('meioNoNaipe ', meioNoNaipe);
     if(meioNoNaipe > cartaProcurada) {
 
       var x = ANIMATION.cartas.childNodes.length;
@@ -26,8 +25,6 @@ var binary = {
         ANIMATION.cartas.removeChild(ANIMATION.cartas.lastChild);
       }
 
-
-      // novo codigo aqui
       var j = meio
       for(var i = meioTeste; i < n; i++) {
         var cartaASerMostrada = document.createElement('img');
@@ -38,8 +35,6 @@ var binary = {
 
       ANIMATION.cartas.setAttribute('data-last', meio-1);
 
-      //ANIMATION.naipe.splice(meio, n-meio);
-
       setTimeout(function() {
         for(var i = meioTeste; i < n; i++) {
           ANIMATION.cartas.removeChild(ANIMATION.cartas.lastChild);
@@ -49,7 +44,6 @@ var binary = {
       var primeiro = +conjuntoCartas.getAttribute('data-first');
       var ultimo = +conjuntoCartas.getAttribute('data-last');
 
-      // Revisar
       setTimeout(function() {
         var x = ANIMATION.cartas.childNodes.length;
         var novoMeio = x == 1 ? 0 : Math.floor((x-1)/2);
@@ -66,7 +60,6 @@ var binary = {
         ANIMATION.cartas.removeChild(ANIMATION.cartas.firstChild);
       }
 
-      // novo codigo aqui
       var j = meio;
       for(var i = 0; i < meioTeste+1; i++) {
         var cartaASerMostrada = document.createElement('img');
@@ -77,8 +70,6 @@ var binary = {
 
       ANIMATION.cartas.setAttribute('data-first', meio+1);
 
-      //ANIMATION.naipe.splice(0, meio+1);
-
       setTimeout(function(){
         for(var i = 0; i < meioTeste+1; i++) {
           ANIMATION.cartas.removeChild(ANIMATION.cartas.firstChild);
@@ -88,7 +79,6 @@ var binary = {
       var primeiro = +conjuntoCartas.getAttribute('data-first');
       var ultimo = +conjuntoCartas.getAttribute('data-last');
 
-      // Revisar
       setTimeout(function() {
         var x = ANIMATION.cartas.childNodes.length;
         var novoMeio = x == 1 ? 0 : Math.floor((x-1)/2);
@@ -99,7 +89,6 @@ var binary = {
       }, 3000);
 
     } else if(meioNoNaipe == cartaProcurada) {
-      console.log('Hey bro');
       var cartaVirada = document.createElement('img');
       cartaVirada.setAttribute('src', ANIMATION.naipe[meio][0]);
       cartaVirada.setAttribute('class', 'card-padding card-size animated fadeIn opacity');

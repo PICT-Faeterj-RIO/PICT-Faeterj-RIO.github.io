@@ -13,15 +13,12 @@ var sequential = {
     i = ANIMATION.cenario[3] == 'sequencial-d' ? i : 0;
 
     var cartaVirada = document.createElement('img');
-    console.log(ANIMATION.naipe[i]);
     cartaVirada.setAttribute('src', ANIMATION.naipe[i][0]);
     cartaVirada.setAttribute('class', 'card-padding card-size animated fadeIn');
     ANIMATION.cartas.insertBefore(cartaVirada, cartaClicada);
 
       if (ANIMATION.naipe[i][1] == ANIMATION.cenario[1]) {
           feedback.found(cartaVirada);
-          ANIMATION.ultimaCartaClicada = ANIMATION.naipe[i][1];
-          ANIMATION.numCartas = ANIMATION.cartas.childNodes.length;
       } else if (cartaClicada == ANIMATION.cartas.lastChild) {
           feedback.notFound(cartaVirada, cartaClicada);
       } else if (+ANIMATION.naipe[i][1] > +ANIMATION.cenario[1] && ANIMATION.cenario[3] === 'sequencial-o') {
