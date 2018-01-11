@@ -3,42 +3,42 @@ var feedback = {
       ANIMATION.cartas.setAttribute('data-found', 'true');
       cartaVirada.setAttribute('class', 'card-padding card-size animated jello');
       setTimeout(function() {
-          var div = document.createElement('div');
-          div.setAttribute('class', 'alert alert-success');
-          div.setAttribute('role', 'alert');
-          var text = document.createTextNode('Carta encontrada :), substituir por modal explicativo ...');
-          document.body.appendChild(div);
-          div.appendChild(text);
+        $.notify({
+            icon: 'fa fa-check',
+            message: 'Carta encontrada :), substituir por modal explicativo ...'
+        }, {
+          type: 'success',
+          mouse_over: 'pause'
+        });
       }, 500);
-      feedback.removeFeed();
   },
 
   notFound: function(cartaVirada, cartaClicada) {
       setTimeout(function() {
           cartaVirada.setAttribute('class', 'card-padding card-size hide animated fadeOut');
           cartaClicada.setAttribute('class', 'card-padding card-size show animated fadeIn');
-          var div = document.createElement('div');
-          div.setAttribute('class', 'alert alert-danger');
-          div.setAttribute('role', 'alert');
-          var text = document.createTextNode('Carta não foi encontrada :/, substituir por modal explicativo ...');
-          document.body.appendChild(div);
-          div.appendChild(text);
+          $.notify({
+              icon: 'fa fa-frown-o',
+              message: 'Carta não foi encontrada :/, substituir por modal explicativo ...'
+          }, {
+            type: 'danger',
+            mouse_over: 'pause'
+          });
       }, 1500);
-      feedback.removeFeed();
   },
 
   hasPassed: function(cartaVirada, i) {
       cartaVirada.setAttribute('class', 'card-padding card-size animated fadeIn');
       cartaVirada.setAttribute('id', 'lastValidCard');
       setTimeout(function() {
-        var div = document.createElement('div');
-        div.setAttribute('class', 'alert alert-dark');
-        div.setAttribute('role', 'alert');
-        var text = document.createTextNode('Não é necessário continuar, pois ' + i + ' é maior do que a carta procurada :/, substituir por modal explicativo ...');
-        document.body.appendChild(div);
-        div.appendChild(text);
+        $.notify({
+            icon: 'fa fa-meh-o',
+            message: 'Não é necessário continuar, pois ' + i + ' é maior do que a carta procurada :/, substituir por modal explicativo ...'
+        }, {
+          type: 'warning',
+          mouse_over: 'pause'
+        });
       }, 500);
-      feedback.removeFeed();
   },
 
   continue: function (cartaVirada, cartaClicada) {
@@ -48,54 +48,47 @@ var feedback = {
               cartaVirada.setAttribute('class', 'card-padding card-size hide animated fadeOut');
               cartaClicada.setAttribute('class', 'card-padding card-size show animated fadeIn');
           }, 1500);
-          feedback.removeFeed();
       }, 100);
   },
 
   required: function() {
-    var div = document.createElement('div');
-    div.setAttribute('class', 'alert alert-danger');
-    div.setAttribute('role', 'alert');
-    var text = document.createTextNode('Preencha o cenário corretamente.');
-    document.body.appendChild(div);
-    div.appendChild(text);
-    feedback.removeFeed();
+    $.notify({
+        icon: 'fa fa-exclamation-triangle',
+        message: 'Preencha o cenário corretamente.'
+    }, {
+      type: 'danger',
+      mouse_over: 'pause'
+    });
   },
 
   alreadyFound: function() {
-    var div = document.createElement('div');
-    div.setAttribute('class', 'alert alert-primary');
-    div.setAttribute('role', 'alert');
-    var text = document.createTextNode('Carta já foi encontrada, tente outra busca.. substituir por modal explicativo ...');
-    document.body.appendChild(div);
-    div.appendChild(text);
-    feedback.removeFeed();
+    $.notify({
+        icon: 'fa fa-info',
+        message: 'Carta já foi encontrada, tente outra busca.. substituir por modal explicativo ...'
+    }, {
+      type: 'warning',
+      mouse_over: 'pause'
+    });
   },
 
   neverFound: function() {
-    var div = document.createElement('div');
-    div.setAttribute('class', 'alert alert-primary');
-    div.setAttribute('role', 'alert');
-    var text = document.createTextNode('Carta não foi encontrada :/, substituir por modal explicativo ...');
-    document.body.appendChild(div);
-    div.appendChild(text);
-    feedback.removeFeed();
+    $.notify({
+        icon: 'fa fa-frown-o',
+        message: 'Carta não foi encontrada :/, substituir por modal explicativo ...'
+    }, {
+      type: 'danger',
+      mouse_over: 'pause'
+    });
   },
 
   isSequential: function() {
-    var div = document.createElement('div');
-    div.setAttribute('class', 'alert alert-primary');
-    div.setAttribute('role', 'alert');
-    var text = document.createTextNode('Oops, lembre-se que a busca é sequencial ;), substituir por modal explicativo ...');
-    document.body.appendChild(div);
-    div.appendChild(text);
-    feedback.removeFeed();
-  },
-
-  removeFeed: function() {
-    setTimeout(function(){
-      var elem = document.querySelector('.alert');
-      elem.parentNode.removeChild(elem);
-    }, 5000);
+    $.notify({
+        icon: 'fa fa-info',
+        message: 'Oops, lembre-se que a busca é sequencial ;), substituir por modal explicativo ...'
+    }, {
+      type: 'warning',
+      mouse_over: 'pause'
+    });
   }
+
 }
