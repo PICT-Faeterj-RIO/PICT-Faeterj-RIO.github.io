@@ -1,6 +1,10 @@
+*, ::after, ::before {
+	box-sizing: inherit !important;
+}
+
 body {
 	width: 800px;
-	margin: 0 auto
+	margin: 0 auto !important
 }
 
 h1 {
@@ -30,7 +34,7 @@ label {
 }
 
 .card-size {
-	width: 68px
+	width: 68px !important
 }
 
 .cards {

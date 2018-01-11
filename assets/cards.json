@@ -1,223 +1,223 @@
-var cards = {  
-   "espadas":[  
-      {  
-         "rei":[  
+var cards = {
+   "espadas":[
+      {
+         "rei":[
             "img/cards/king_of_spades2.png",
-            "rei"
+            "12"
          ],
-         "dama":[  
+         "dama":[
             "img/cards/queen_of_spades2.png",
-            "dama"
+            "11"
          ],
-         "valete":[  
+         "valete":[
             "img/cards/jack_of_spades2.png",
-            "valete"
+            "13"
          ],
-         "as":[  
+         "as":[
             "img/cards/ace_of_spades2.png",
-            "as"
+            "14"
          ],
-         "2":[  
+         "2":[
             "img/cards/2_of_spades.png",
             "2"
          ],
-         "3":[  
+         "3":[
             "img/cards/3_of_spades.png",
             "3"
          ],
-         "4":[  
+         "4":[
             "img/cards/4_of_spades.png",
             "4"
          ],
-         "5":[  
+         "5":[
             "img/cards/5_of_spades.png",
             "5"
          ],
-         "6":[  
+         "6":[
             "img/cards/6_of_spades.png",
             "6"
          ],
-         "7":[  
+         "7":[
             "img/cards/7_of_spades.png",
             "7"
          ],
-         "8":[  
+         "8":[
             "img/cards/8_of_spades.png",
             "8"
          ],
-         "9":[  
+         "9":[
             "img/cards/9_of_spades.png",
             "9"
          ],
-         "10":[  
+         "10":[
             "img/cards/10_of_spades.png",
             "10"
          ]
       }
    ],
-   "paus":[  
-      {  
-         "rei":[  
+   "paus":[
+      {
+         "rei":[
             "img/cards/king_of_clubs2.png",
-            "rei"
+            "12"
          ],
-         "dama":[  
+         "dama":[
             "img/cards/queen_of_clubs2.png",
-            "dama"
+            "11"
          ],
-         "valete":[  
+         "valete":[
             "img/cards/jack_of_clubs2.png",
-            "valete"
+            "13"
          ],
-         "as":[  
+         "as":[
             "img/cards/ace_of_clubs.png",
-            "as"
+            "14"
          ],
-         "2":[  
+         "2":[
             "img/cards/2_of_clubs.png",
             "2"
          ],
-         "3":[  
+         "3":[
             "img/cards/3_of_clubs.png",
             "3"
          ],
-         "4":[  
+         "4":[
             "img/cards/4_of_clubs.png",
             "4"
          ],
-         "5":[  
+         "5":[
             "img/cards/5_of_clubs.png",
             "5"
          ],
-         "6":[  
+         "6":[
             "img/cards/6_of_clubs.png",
             "6"
          ],
-         "7":[  
+         "7":[
             "img/cards/7_of_clubs.png",
             "7"
          ],
-         "8":[  
+         "8":[
             "img/cards/8_of_clubs.png",
             "8"
          ],
-         "9":[  
+         "9":[
             "img/cards/9_of_clubs.png",
             "9"
          ],
-         "10":[  
+         "10":[
             "img/cards/10_of_clubs.png",
             "10"
          ]
       }
    ],
-   "copas":[  
-      {  
-         "rei":[  
+   "copas":[
+      {
+         "rei":[
             "img/cards/king_of_hearts2.png",
-            "rei"
+            "12"
          ],
-         "dama":[  
+         "dama":[
             "img/cards/queen_of_hearts2.png",
-            "dama"
+            "11"
          ],
-         "valete":[  
+         "valete":[
             "img/cards/jack_of_hearts2.png",
-            "valete"
+            "13"
          ],
-         "as":[  
+         "as":[
             "img/cards/ace_of_hearts.png",
-            "as"
+            "14"
          ],
-         "2":[  
+         "2":[
             "img/cards/2_of_hearts.png",
             "2"
          ],
-         "3":[  
+         "3":[
             "img/cards/3_of_hearts.png",
             "3"
          ],
-         "4":[  
+         "4":[
             "img/cards/4_of_hearts.png",
             "4"
          ],
-         "5":[  
+         "5":[
             "img/cards/5_of_hearts.png",
             "5"
          ],
-         "6":[  
+         "6":[
             "img/cards/6_of_hearts.png",
             "6"
          ],
-         "7":[  
+         "7":[
             "img/cards/7_of_hearts.png",
             "7"
          ],
-         "8":[  
+         "8":[
             "img/cards/8_of_hearts.png",
             "8"
          ],
-         "9":[  
+         "9":[
             "img/cards/9_of_hearts.png",
             "9"
          ],
-         "10":[  
+         "10":[
             "img/cards/10_of_hearts.png",
             "10"
          ]
       }
    ],
-   "ouro":[  
-      {  
-         "rei":[  
+   "ouro":[
+      {
+         "rei":[
             "img/cards/king_of_diamonds2.png",
-            "rei"
+            "12"
          ],
-         "dama":[  
+         "dama":[
             "img/cards/queen_of_diamonds2.png",
-            "dama"
+            "11"
          ],
-         "valete":[  
+         "valete":[
             "img/cards/jack_of_diamonds2.png",
-            "valete"
+            "13"
          ],
-         "as":[  
+         "as":[
             "img/cards/ace_of_diamonds.png",
-            "as"
+            "14"
          ],
-         "2":[  
+         "2":[
             "img/cards/2_of_diamonds.png",
             "2"
          ],
-         "3":[  
+         "3":[
             "img/cards/3_of_diamonds.png",
             "3"
          ],
-         "4":[  
+         "4":[
             "img/cards/4_of_diamonds.png",
             "4"
          ],
-         "5":[  
+         "5":[
             "img/cards/5_of_diamonds.png",
             "5"
          ],
-         "6":[  
+         "6":[
             "img/cards/6_of_diamonds.png",
             "6"
          ],
-         "7":[  
+         "7":[
             "img/cards/7_of_diamonds.png",
             "7"
          ],
-         "8":[  
+         "8":[
             "img/cards/8_of_diamonds.png",
             "8"
          ],
-         "9":[  
+         "9":[
             "img/cards/9_of_diamonds.png",
             "9"
          ],
-         "10":[  
+         "10":[
             "img/cards/10_of_diamonds.png",
             "10"
          ]

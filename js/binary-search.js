@@ -16,6 +16,7 @@ var binary = {
     var meio = Math.floor((primeiro+ultimo)/2);
 
     var meioNoNaipe = +ANIMATION.naipe[meio][1];
+    console.log(meioNoNaipe, meio, ANIMATION.naipe);
     var cartaProcurada = +ANIMATION.cenario[1];
     if(meioNoNaipe > cartaProcurada) {
 

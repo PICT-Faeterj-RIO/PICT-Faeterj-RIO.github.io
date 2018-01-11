@@ -2,7 +2,7 @@ var sequential = {
   type: function (cartaClicada) {
       cartaClicada.className = 'card-padding hide';
       if (ANIMATION.cenario[3] === 'sequencial-d') {
-          sequential.search(cartaClicada, getRandomInt(0, 12));
+          sequential.search(cartaClicada, 0);
       } else {
           sequential.search(cartaClicada, 0);
       }
@@ -10,7 +10,7 @@ var sequential = {
 
   search: function (cartaClicada, i) {
 
-    i = ANIMATION.cenario[3] == 'sequencial-d' ? i : 0;
+    var i = +ANIMATION.cartas.getAttribute('data-index') || 0;
 
     var cartaVirada = document.createElement('img');
     cartaVirada.setAttribute('src', ANIMATION.naipe[i][0]);
@@ -22,13 +22,11 @@ var sequential = {
       } else if (cartaClicada == ANIMATION.cartas.lastChild) {
           feedback.notFound(cartaVirada, cartaClicada);
       } else if (+ANIMATION.naipe[i][1] > +ANIMATION.cenario[1] && ANIMATION.cenario[3] === 'sequencial-o') {
-          i = +ANIMATION.cenario[1] + 1;
-          feedback.hasPassed(cartaVirada, i);
+          var j = +ANIMATION.cenario[1] + 1;
+          feedback.hasPassed(cartaVirada, j);
       } else {
           feedback.continue(cartaVirada, cartaClicada);
       }
-      if(i == 0) {
-        ANIMATION.naipe.splice(0, 1);
-      }
+      ANIMATION.cartas.setAttribute('data-index', ++i);
   }
 }

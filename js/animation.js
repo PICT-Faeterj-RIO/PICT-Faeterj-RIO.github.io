@@ -12,11 +12,10 @@ function exibirCartas(evt) {
     ANIMATION.cenario = obterCenario();
     ANIMATION.naipe = obterNaipe(ANIMATION.cenario[2]);
     ANIMATION.cartas.setAttribute('data-found', 'false');
+    ANIMATION.cartas.removeAttribute('data-index');
     if (isNaN(ANIMATION.cenario[0]) || ANIMATION.cenario[0] < 4 || ANIMATION.cenario[0] > 13 ||
     ANIMATION.cenario[1] === '' || ANIMATION.cenario[2] === '' || ANIMATION.cenario[3] === '') {
         feedback.required();
-    } else if(ANIMATION.cenario[0] > 9 && ANIMATION.cenario[3] !== 'sequencial-d') {
-          feedback.requiredForOrderedSearch();
     } else {
         // Caso seja a primeira tentativa remove a imagem inicial
         var imagemInicial = document.querySelector('#playing-cards');
@@ -136,10 +135,13 @@ function obterNaipe(string) {
           naipe.push(naipe[ANIMATION.cenario[0]]);
         }
 
-        if(ANIMATION.cenario[3] != 'sequencial-d') {
-          var j = +ANIMATION.cenario[0];
-          naipe.splice(j);
+        if(ANIMATION.cenario[3] == 'sequencial-d') {
+          shuffleArray(naipe);
         }
+
+        var j = +ANIMATION.cenario[0];
+        naipe.splice(j);
+
     }
 
     return naipe;
@@ -170,13 +172,22 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
+function shuffleArray(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+}
+
 function carregarJSON(callback) {
     var request = new XMLHttpRequest();
     request.onload = function() {
         console.log(request.response, request.status);
         callback(request.response);
     }
-    request.open('GET', 'https://api.myjson.com/bins/bj79p');
+    request.open('GET', 'https://api.myjson.com/bins/w5zk9');
     request.responseType = 'json';
     request.send();
 }
@@ -185,36 +196,13 @@ function callback(data) {
     ANIMATION.jsonObj = data;
 }
 
-function restringirCarta() {
-  var selectedSearch = document.querySelector('#type-of-search')
-  .options[document.querySelector('#type-of-search').selectedIndex].value;
-  var select = document.querySelector('#searched-card');
-  if(selectedSearch == 'sequencial-o' || selectedSearch == 'binaria') {
-    for(var i = 0; i < select.options.length; i++) {
-      if(select.options[i].value == 'rei' || select.options[i].value == 'dama' ||
-         select.options[i].value == 'valete' || select.options[i].value == 'as') {
-            select.options[i].setAttribute('disabled', '');
-         }
-    }
-  } else {
-    for(var i = 0; i < select.options.length; i++) {
-      if(select.options[i].value == 'rei' || select.options[i].value == 'dama' ||
-         select.options[i].value == 'valete' || select.options[i].value == 'as') {
-            select.options[i].removeAttribute('disabled');
-         }
-    }
-  }
-
-}
-
-window.document.onload = restringirCarta();
-
 function preload() {
   var naipes = ['espadas', 'paus', 'copas', 'ouro'];
   var resultado = [];
   var images = [];
   for(var i = 0; i < naipes.length; i++) {
     resultado = obterNaipe(naipes[i]);
+    console.log(resultado);
     for(var j = 0; j < resultado.length; j++) {
       images.push(new Image().src = resultado[j][0]);
     }
