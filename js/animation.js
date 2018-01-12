@@ -11,8 +11,9 @@ document.querySelector('#form').addEventListener('submit', exibirCartas, false);
 function exibirCartas(evt) {
     ANIMATION.cenario = obterCenario();
     ANIMATION.naipe = obterNaipe(ANIMATION.cenario[2]);
-    ANIMATION.cartas.setAttribute('data-found', 'false');
+    ANIMATION.cartas.removeAttribute('data-found');
     ANIMATION.cartas.removeAttribute('data-index');
+    ANIMATION.cartas.removeAttribute('data-finished');
     if (isNaN(ANIMATION.cenario[0]) || ANIMATION.cenario[0] < 4 || ANIMATION.cenario[0] > 13 ||
     ANIMATION.cenario[1] === '' || ANIMATION.cenario[2] === '' || ANIMATION.cenario[3] === '') {
         feedback.required();
@@ -76,6 +77,7 @@ function criarCartas() {
       var meio = Math.floor((ANIMATION.cenario[0]-1)/2);
       setTimeout(function() {
         ANIMATION.cartas.childNodes[meio].setAttribute('class', 'card-padding animated pulse infinite');
+        ANIMATION.cartas.childNodes[meio].setAttribute('data-target', meio);
       }, 4500);
     }else {
       setTimeout(function() {
@@ -94,7 +96,7 @@ function iniciarPesquisa(evt) {
           ANIMATION.cartas.lastChild.setAttribute('id', 'lastValidCard');
         }
         sequential.type(cartaClicada);
-    } else if (encontrado == 'true') {
+    } else if (encontrado) {
         feedback.alreadyFound();
     } else if (document.querySelector('#lastValidCard') !== null) {
         feedback.neverFound();

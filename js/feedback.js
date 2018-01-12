@@ -18,7 +18,7 @@ var feedback = {
           cartaVirada.setAttribute('class', 'card-padding card-size hide animated fadeOut');
           cartaClicada.setAttribute('class', 'card-padding card-size show animated fadeIn');
           $.notify({
-              icon: 'fa fa-frown-o',
+              icon: 'fa fa-exclamation-triangle',
               message: 'Carta não foi encontrada :/, substituir por modal explicativo ...'
           }, {
             type: 'danger',
@@ -32,7 +32,7 @@ var feedback = {
       cartaVirada.setAttribute('id', 'lastValidCard');
       setTimeout(function() {
         $.notify({
-            icon: 'fa fa-meh-o',
+            icon: 'fa fa-info',
             message: 'Não é necessário continuar, pois ' + i + ' é maior do que a carta procurada :/, substituir por modal explicativo ...'
         }, {
           type: 'warning',
@@ -83,10 +83,10 @@ var feedback = {
 
   isSequential: function() {
     $.notify({
-        icon: 'fa fa-info',
+        icon: 'fa fa-exclamation-triangle',
         message: 'Oops, lembre-se que a busca é sequencial ;), substituir por modal explicativo ...'
     }, {
-      type: 'warning',
+      type: 'danger',
       mouse_over: 'pause'
     });
   }
