@@ -14,8 +14,8 @@ function exibirCartas(evt) {
     ANIMATION.cartas.removeAttribute('data-found');
     ANIMATION.cartas.removeAttribute('data-index');
     ANIMATION.cartas.removeAttribute('data-finished');
-    if (isNaN(ANIMATION.cenario[0]) || ANIMATION.cenario[0] < 4 || ANIMATION.cenario[0] > 13 ||
-    ANIMATION.cenario[1] === '' || ANIMATION.cenario[2] === '' || ANIMATION.cenario[3] === '') {
+    if (ANIMATION.cenario[0] === '' || ANIMATION.cenario[1] === '' ||
+    ANIMATION.cenario[2] === '' || ANIMATION.cenario[3] === '') {
         feedback.required();
     } else {
         // Caso seja a primeira tentativa remove a imagem inicial
@@ -36,13 +36,22 @@ function exibirCartas(evt) {
 
 function criarCartas() {
     for (var i = 0; i < ANIMATION.cenario[0]; i++) {
+        var div = document.createElement('div');
+        var h6 = document.createElement('h6');
+        h6.setAttribute('class', 'text-center');
+        var indice = document.createTextNode(i);
+        div.setAttribute('class', 'wrap-image');
         var cartaOculta = document.createElement('img');
         cartaOculta.setAttribute('src', 'img/cards/back.png');
-        cartaOculta.setAttribute('class', 'card-padding flipInX animated');
-        ANIMATION.cartas.appendChild(cartaOculta);
+        cartaOculta.setAttribute('class', ' card-padding flipInX animated');
+        div.appendChild(cartaOculta);
+        h6.appendChild(indice);
+        div.appendChild(h6);
+        ANIMATION.cartas.appendChild(div);
     }
 
     if(ANIMATION.cenario[3] === 'binaria') {
+      document.querySelector('.container').setAttribute('class', 'container disable-click');
       setTimeout(function(){
         for(var i = 0; i < ANIMATION.cenario[0]; i++) {
             ANIMATION.cartas.removeChild(ANIMATION.cartas.firstChild);
@@ -52,10 +61,18 @@ function criarCartas() {
       var cartaExiste = document.querySelector('.cards').getAttribute('data-random');
       setTimeout(function(){
         for(var i = 0; i < ANIMATION.cenario[0]; i++) {
-          var cartaASerMostrada = document.createElement('img');
-          cartaASerMostrada.setAttribute('src', ANIMATION.naipe[i][0]);
-          cartaASerMostrada.setAttribute('class', 'card-padding fadeIn animated card-size');
-          ANIMATION.cartas.appendChild(cartaASerMostrada);
+          var div = document.createElement('div');
+          var h6 = document.createElement('h6');
+          h6.setAttribute('class', 'text-center');
+          var indice = document.createTextNode(i);
+          div.setAttribute('class', 'wrap-image');
+          var cartaOculta = document.createElement('img');
+          cartaOculta.setAttribute('src', ANIMATION.naipe[i][0]);
+          cartaOculta.setAttribute('class', ' card-padding fadeIn animated card-size');
+          div.appendChild(cartaOculta);
+          h6.appendChild(indice);
+          div.appendChild(h6);
+          ANIMATION.cartas.appendChild(div);
         }
       },1500);
 
@@ -67,38 +84,48 @@ function criarCartas() {
 
       setTimeout(function(){
         for (var i = 0; i < ANIMATION.cenario[0]; i++) {
-            var cartaOculta = document.createElement('img');
-            cartaOculta.setAttribute('src', 'img/cards/back.png');
-            cartaOculta.setAttribute('class', 'card-padding fadeIn animated');
-            ANIMATION.cartas.appendChild(cartaOculta);
+          var div = document.createElement('div');
+          var h6 = document.createElement('h6');
+          h6.setAttribute('class', 'text-center');
+          var indice = document.createTextNode(i);
+          div.setAttribute('class', 'wrap-image');
+          var cartaOculta = document.createElement('img');
+          cartaOculta.setAttribute('src', 'img/cards/back.png');
+          cartaOculta.setAttribute('class', ' card-padding fadeIn animated');
+          div.appendChild(cartaOculta);
+          h6.appendChild(indice);
+          div.appendChild(h6);
+          ANIMATION.cartas.appendChild(div);
         }
       }, 4500);
 
       var meio = Math.floor((ANIMATION.cenario[0]-1)/2);
       setTimeout(function() {
-        ANIMATION.cartas.childNodes[meio].setAttribute('class', 'card-padding animated pulse infinite');
-        ANIMATION.cartas.childNodes[meio].setAttribute('data-target', meio);
+        document.querySelector('.container').setAttribute('class', 'container enable-click');
+        ANIMATION.cartas.childNodes[meio].lastChild.previousSibling.setAttribute('class', 'wrap-image card-padding animated pulse infinite');
+        ANIMATION.cartas.childNodes[meio].lastChild.previousSibling.setAttribute('data-target', meio);
       }, 4500);
     }else {
       setTimeout(function() {
-          ANIMATION.cartas.firstChild.setAttribute('class', 'card-padding animated pulse infinite');
+          ANIMATION.cartas.firstChild.firstChild.setAttribute('class', 'wrap-image card-padding animated pulse infinite');
       }, 500);
     }
 }
 
 function iniciarPesquisa(evt) {
     var cartaClicada = evt.target || evt.srcElement;
+    cartaClicada = cartaClicada.parentNode;
     var encontrado = ANIMATION.cartas.getAttribute('data-found');
     if(ANIMATION.cenario[3] === 'binaria') {
-      binary.search(cartaClicada);
-    } else if(cartaClicada.className.indexOf('pulse') > 0) {
+      binary.search(cartaClicada.lastChild.previousSibling);
+    } else if(cartaClicada.firstChild.className.indexOf('pulse') > 0) {
         if (cartaClicada === ANIMATION.cartas.lastChild) {
-          ANIMATION.cartas.lastChild.setAttribute('id', 'lastValidCard');
+          ANIMATION.cartas.lastChild.setAttribute('id', 'last-card');
         }
         sequential.type(cartaClicada);
     } else if (encontrado) {
         feedback.alreadyFound();
-    } else if (document.querySelector('#lastValidCard') !== null) {
+    } else if (document.querySelector('#last-card') !== null) {
         feedback.neverFound();
     } else if (ANIMATION.cenario[3] !== 'binaria') {
         feedback.isSequential();
@@ -131,8 +158,10 @@ function obterNaipe(string) {
     if(ANIMATION.cartas.getAttribute('data-random')) {
         var cartaExiste = ANIMATION.cartas.getAttribute('data-random');
 
+        /* sempre que o número de cartas a serem exibidas for igual a 13 a possibilidade da
+           carta se encontrada será sempre verdadeira */
         var valor = +ANIMATION.cenario[1];
-        if(cartaExiste == 'false') {
+        if(cartaExiste == 'false' && ANIMATION.cenario[0] != '13') {
           naipe.splice(valor-2, 1);
           naipe.push(naipe[ANIMATION.cenario[0]]);
         }
@@ -141,7 +170,7 @@ function obterNaipe(string) {
           shuffleArray(naipe);
         }
 
-        var j = +ANIMATION.cenario[0];
+        var j = ANIMATION.cenario[0];
         naipe.splice(j);
 
     }
@@ -150,13 +179,16 @@ function obterNaipe(string) {
 }
 
 function obterCenario() {
-    var cenario = [+document.querySelector('#size').value,
+    var cenario = [+document.querySelector('#size')
+        .options[document.querySelector('#size').selectedIndex].value,
         document.querySelector('#searched-card')
         .options[document.querySelector('#searched-card').selectedIndex].value,
         document.querySelector('#selected-suit')
         .options[document.querySelector('#selected-suit').selectedIndex].value,
         document.querySelector('#type-of-search')
-        .options[document.querySelector('#type-of-search').selectedIndex].value
+        .options[document.querySelector('#type-of-search').selectedIndex].value,
+        document.querySelector('#searched-card')
+        .options[document.querySelector('#searched-card').selectedIndex].getAttribute('data-neighbor')
     ];
 
     getRandomInt(0, 2) === 0 ? ANIMATION.cartas.setAttribute('data-random', 'true') :
@@ -164,7 +196,7 @@ function obterCenario() {
     ANIMATION.cartas.setAttribute('data-first', 0);
     ANIMATION.cartas.setAttribute('data-middle', Math.floor((cenario[0]-1)/2));
     ANIMATION.cartas.setAttribute('data-last', cenario[0]-1);
-
+    
     return cenario;
 }
 
@@ -204,7 +236,6 @@ function preload() {
   var images = [];
   for(var i = 0; i < naipes.length; i++) {
     resultado = obterNaipe(naipes[i]);
-    console.log(resultado);
     for(var j = 0; j < resultado.length; j++) {
       images.push(new Image().src = resultado[j][0]);
     }

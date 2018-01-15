@@ -50,6 +50,22 @@ label {
 	display: inline-block !important
 }
 
+.wrap-image {
+	display: inline-block;;
+}
+
+.enable-click {
+	pointer-events:all;
+}
+
+.disable-click {
+	pointer-events:none;
+}
+
+.cards img {
+	vertical-align: baseline;;
+}
+
 .opacity {
 	filter: brightness(60%);
 	-webkit-filter: brightness(60%);
