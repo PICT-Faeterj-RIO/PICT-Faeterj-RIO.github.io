@@ -11,7 +11,9 @@ var feedback = {
           mouse_over: 'pause'
         });
       }, 500);
-      stopAnimation(2000, 0, (+document.querySelector('.cards').getAttribute('data-index'))+1);
+      if(ANIMATION.cenario[3] != 'binaria') {
+        stopAnimation(2000, 0, (+document.querySelector('.cards').getAttribute('data-index'))+1);
+      }
   },
 
   notFound: function(cartaVirada, cartaClicada) {

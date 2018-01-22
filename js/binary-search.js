@@ -131,6 +131,7 @@ var binary = {
       cartaClicada.parentNode.insertBefore(cartaVirada, cartaClicada.nextSibling);
       cartaClicada.className = 'card-padding hide';
       feedback.found(cartaVirada);
+      stopAnimation(2000, meio, meio+1);
     }
 
   }

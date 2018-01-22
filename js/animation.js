@@ -271,3 +271,37 @@ function stopAnimation() {
     }
   },timer);
 }
+
+document.querySelector('.bt-reset').addEventListener('click', reset, false);
+
+function reset() {
+  $('#form').trigger("reset");
+
+  document.querySelector('#complexidade').value = '';
+
+  var pendurar = [];
+  for(var i = 0; i < 2; i++) {
+    var divPrincipal = document.createElement('div');
+    divPrincipal.setAttribute('class', 'gig-text row mt-5 disable-click');
+    var divSecundaria = document.createElement('div');
+    divSecundaria.setAttribute('class', 'col-12 mt-5');
+    var p = document.createElement('p');
+    p.setAttribute('class', 'text-muted font-weight-bold');
+    //var texto = document.createTextNode('Crie um cenário e aberte o ' + '<i class="fa fa-play text-light border rounded py-1 px-1" aria-hidden="true"></i>' + ' para começar.');
+    p.innerHTML = 'Crie um cenário e aberte o ' + '<i class="fa fa-play text-light border rounded py-1 px-1" aria-hidden="true"></i>' + ' para começar.';
+    divSecundaria.appendChild(p);
+    divPrincipal.appendChild(divSecundaria);
+    pendurar.push(divPrincipal);
+  }
+
+  while(ANIMATION.cartas.firstChild) {
+    ANIMATION.cartas.removeChild(ANIMATION.cartas.firstChild);
+  }
+  ANIMATION.cartas.appendChild(pendurar[0]);
+
+  while(document.querySelector('#tab2').firstChild) {
+    document.querySelector('#tab2').removeChild(document.querySelector('#tab2').firstChild);
+  }
+  document.querySelector('#tab2').appendChild(pendurar[1]);
+
+}
