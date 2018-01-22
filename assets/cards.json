@@ -2,55 +2,55 @@ var cards = {
    "espadas":[
       {
          "rei":[
-            "img/cards/king_of_spades2.png",
+            "img/cards/king_of_spades2.jpg",
             "12"
          ],
          "dama":[
-            "img/cards/queen_of_spades2.png",
+            "img/cards/queen_of_spades2.jpg",
             "11"
          ],
          "valete":[
-            "img/cards/jack_of_spades2.png",
+            "img/cards/jack_of_spades2.jpg",
             "13"
          ],
          "as":[
-            "img/cards/ace_of_spades2.png",
+            "img/cards/ace_of_spades2.jpg",
             "14"
          ],
          "2":[
-            "img/cards/2_of_spades.png",
+            "img/cards/2_of_spades.jpg",
             "2"
          ],
          "3":[
-            "img/cards/3_of_spades.png",
+            "img/cards/3_of_spades.jpg",
             "3"
          ],
          "4":[
-            "img/cards/4_of_spades.png",
+            "img/cards/4_of_spades.jpg",
             "4"
          ],
          "5":[
-            "img/cards/5_of_spades.png",
+            "img/cards/5_of_spades.jpg",
             "5"
          ],
          "6":[
-            "img/cards/6_of_spades.png",
+            "img/cards/6_of_spades.jpg",
             "6"
          ],
          "7":[
-            "img/cards/7_of_spades.png",
+            "img/cards/7_of_spades.jpg",
             "7"
          ],
          "8":[
-            "img/cards/8_of_spades.png",
+            "img/cards/8_of_spades.jpg",
             "8"
          ],
          "9":[
-            "img/cards/9_of_spades.png",
+            "img/cards/9_of_spades.jpg",
             "9"
          ],
          "10":[
-            "img/cards/10_of_spades.png",
+            "img/cards/10_of_spades.jpg",
             "10"
          ]
       }
@@ -58,55 +58,55 @@ var cards = {
    "paus":[
       {
          "rei":[
-            "img/cards/king_of_clubs2.png",
+            "img/cards/king_of_clubs2.jpg",
             "12"
          ],
          "dama":[
-            "img/cards/queen_of_clubs2.png",
+            "img/cards/queen_of_clubs2.jpg",
             "11"
          ],
          "valete":[
-            "img/cards/jack_of_clubs2.png",
+            "img/cards/jack_of_clubs2.jpg",
             "13"
          ],
          "as":[
-            "img/cards/ace_of_clubs.png",
+            "img/cards/ace_of_clubs.jpg",
             "14"
          ],
          "2":[
-            "img/cards/2_of_clubs.png",
+            "img/cards/2_of_clubs.jpg",
             "2"
          ],
          "3":[
-            "img/cards/3_of_clubs.png",
+            "img/cards/3_of_clubs.jpg",
             "3"
          ],
          "4":[
-            "img/cards/4_of_clubs.png",
+            "img/cards/4_of_clubs.jpg",
             "4"
          ],
          "5":[
-            "img/cards/5_of_clubs.png",
+            "img/cards/5_of_clubs.jpg",
             "5"
          ],
          "6":[
-            "img/cards/6_of_clubs.png",
+            "img/cards/6_of_clubs.jpg",
             "6"
          ],
          "7":[
-            "img/cards/7_of_clubs.png",
+            "img/cards/7_of_clubs.jpg",
             "7"
          ],
          "8":[
-            "img/cards/8_of_clubs.png",
+            "img/cards/8_of_clubs.jpg",
             "8"
          ],
          "9":[
-            "img/cards/9_of_clubs.png",
+            "img/cards/9_of_clubs.jpg",
             "9"
          ],
          "10":[
-            "img/cards/10_of_clubs.png",
+            "img/cards/10_of_clubs.jpg",
             "10"
          ]
       }
@@ -114,55 +114,55 @@ var cards = {
    "copas":[
       {
          "rei":[
-            "img/cards/king_of_hearts2.png",
+            "img/cards/king_of_hearts2.jpg",
             "12"
          ],
          "dama":[
-            "img/cards/queen_of_hearts2.png",
+            "img/cards/queen_of_hearts2.jpg",
             "11"
          ],
          "valete":[
-            "img/cards/jack_of_hearts2.png",
+            "img/cards/jack_of_hearts2.jpg",
             "13"
          ],
          "as":[
-            "img/cards/ace_of_hearts.png",
+            "img/cards/ace_of_hearts.jpg",
             "14"
          ],
          "2":[
-            "img/cards/2_of_hearts.png",
+            "img/cards/2_of_hearts.jpg",
             "2"
          ],
          "3":[
-            "img/cards/3_of_hearts.png",
+            "img/cards/3_of_hearts.jpg",
             "3"
          ],
          "4":[
-            "img/cards/4_of_hearts.png",
+            "img/cards/4_of_hearts.jpg",
             "4"
          ],
          "5":[
-            "img/cards/5_of_hearts.png",
+            "img/cards/5_of_hearts.jpg",
             "5"
          ],
          "6":[
-            "img/cards/6_of_hearts.png",
+            "img/cards/6_of_hearts.jpg",
             "6"
          ],
          "7":[
-            "img/cards/7_of_hearts.png",
+            "img/cards/7_of_hearts.jpg",
             "7"
          ],
          "8":[
-            "img/cards/8_of_hearts.png",
+            "img/cards/8_of_hearts.jpg",
             "8"
          ],
          "9":[
-            "img/cards/9_of_hearts.png",
+            "img/cards/9_of_hearts.jpg",
             "9"
          ],
          "10":[
-            "img/cards/10_of_hearts.png",
+            "img/cards/10_of_hearts.jpg",
             "10"
          ]
       }
@@ -170,55 +170,55 @@ var cards = {
    "ouro":[
       {
          "rei":[
-            "img/cards/king_of_diamonds2.png",
+            "img/cards/king_of_diamonds2.jpg",
             "12"
          ],
          "dama":[
-            "img/cards/queen_of_diamonds2.png",
+            "img/cards/queen_of_diamonds2.jpg",
             "11"
          ],
          "valete":[
-            "img/cards/jack_of_diamonds2.png",
+            "img/cards/jack_of_diamonds2.jpg",
             "13"
          ],
          "as":[
-            "img/cards/ace_of_diamonds.png",
+            "img/cards/ace_of_diamonds.jpg",
             "14"
          ],
          "2":[
-            "img/cards/2_of_diamonds.png",
+            "img/cards/2_of_diamonds.jpg",
             "2"
          ],
          "3":[
-            "img/cards/3_of_diamonds.png",
+            "img/cards/3_of_diamonds.jpg",
             "3"
          ],
          "4":[
-            "img/cards/4_of_diamonds.png",
+            "img/cards/4_of_diamonds.jpg",
             "4"
          ],
          "5":[
-            "img/cards/5_of_diamonds.png",
+            "img/cards/5_of_diamonds.jpg",
             "5"
          ],
          "6":[
-            "img/cards/6_of_diamonds.png",
+            "img/cards/6_of_diamonds.jpg",
             "6"
          ],
          "7":[
-            "img/cards/7_of_diamonds.png",
+            "img/cards/7_of_diamonds.jpg",
             "7"
          ],
          "8":[
-            "img/cards/8_of_diamonds.png",
+            "img/cards/8_of_diamonds.jpg",
             "8"
          ],
          "9":[
-            "img/cards/9_of_diamonds.png",
+            "img/cards/9_of_diamonds.jpg",
             "9"
          ],
          "10":[
-            "img/cards/10_of_diamonds.png",
+            "img/cards/10_of_diamonds.jpg",
             "10"
          ]
       }

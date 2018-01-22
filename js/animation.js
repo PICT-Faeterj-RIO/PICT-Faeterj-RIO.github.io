@@ -6,7 +6,7 @@ var ANIMATION = {
     naipe: 'undefined',
 }
 
-document.querySelector('#form').addEventListener('submit', exibirCartas, false);
+document.querySelector('.bt-play').addEventListener('click', exibirCartas, false);
 
 function exibirCartas(evt) {
     ANIMATION.cenario = obterCenario();
@@ -14,14 +14,14 @@ function exibirCartas(evt) {
     ANIMATION.cartas.removeAttribute('data-found');
     ANIMATION.cartas.removeAttribute('data-index');
     ANIMATION.cartas.removeAttribute('data-finished');
-    if (ANIMATION.cenario[0] === '' || ANIMATION.cenario[1] === '' ||
-    ANIMATION.cenario[2] === '' || ANIMATION.cenario[3] === '') {
+    if (ANIMATION.cenario[0] == '' || ANIMATION.cenario[1] == '' ||
+    ANIMATION.cenario[2] == '' || ANIMATION.cenario[3] == '') {
         feedback.required();
     } else {
-        // Caso seja a primeira tentativa remove a imagem inicial
-        var imagemInicial = document.querySelector('#playing-cards');
-        if (imagemInicial != null) {
-            imagemInicial.remove();
+        // Caso seja a primeira tentativa remove o texto inicial
+        var textoInicial = document.querySelector('.gig-text');
+        if (textoInicial != null) {
+            textoInicial.remove();
         }
         // Caso não seja a primeira tentativa remove as cartas do cenario anterior
         while (ANIMATION.cartas.firstChild) {
@@ -38,20 +38,22 @@ function criarCartas() {
     for (var i = 0; i < ANIMATION.cenario[0]; i++) {
         var div = document.createElement('div');
         var h6 = document.createElement('h6');
-        h6.setAttribute('class', 'text-center');
+        h6.setAttribute('class', 'text-center text-light');
         var indice = document.createTextNode(i);
         div.setAttribute('class', 'wrap-image');
         var cartaOculta = document.createElement('img');
         cartaOculta.setAttribute('src', 'img/cards/back.png');
-        cartaOculta.setAttribute('class', ' card-padding flipInX animated');
+        cartaOculta.setAttribute('class', 'card-padding flipInX animated');
         div.appendChild(cartaOculta);
         h6.appendChild(indice);
         div.appendChild(h6);
         ANIMATION.cartas.appendChild(div);
     }
 
+    stopAnimation(1500, 0, ANIMATION.cenario[0]);
+
     if(ANIMATION.cenario[3] === 'binaria') {
-      document.querySelector('.container').setAttribute('class', 'container disable-click');
+      document.querySelector('.main-container').setAttribute('class', 'main-container container-fluid py-4');
       setTimeout(function(){
         for(var i = 0; i < ANIMATION.cenario[0]; i++) {
             ANIMATION.cartas.removeChild(ANIMATION.cartas.firstChild);
@@ -63,12 +65,12 @@ function criarCartas() {
         for(var i = 0; i < ANIMATION.cenario[0]; i++) {
           var div = document.createElement('div');
           var h6 = document.createElement('h6');
-          h6.setAttribute('class', 'text-center');
+          h6.setAttribute('class', 'text-center text-light');
           var indice = document.createTextNode(i);
           div.setAttribute('class', 'wrap-image');
           var cartaOculta = document.createElement('img');
           cartaOculta.setAttribute('src', ANIMATION.naipe[i][0]);
-          cartaOculta.setAttribute('class', ' card-padding fadeIn animated card-size');
+          cartaOculta.setAttribute('class', 'card-padding fadeIn animated');
           div.appendChild(cartaOculta);
           h6.appendChild(indice);
           div.appendChild(h6);
@@ -86,7 +88,7 @@ function criarCartas() {
         for (var i = 0; i < ANIMATION.cenario[0]; i++) {
           var div = document.createElement('div');
           var h6 = document.createElement('h6');
-          h6.setAttribute('class', 'text-center');
+          h6.setAttribute('class', 'text-center text-light');
           var indice = document.createTextNode(i);
           div.setAttribute('class', 'wrap-image');
           var cartaOculta = document.createElement('img');
@@ -99,15 +101,17 @@ function criarCartas() {
         }
       }, 4500);
 
+      stopAnimation(5000, 0, ANIMATION.cenario[0]);
+
       var meio = Math.floor((ANIMATION.cenario[0]-1)/2);
       setTimeout(function() {
-        document.querySelector('.container').setAttribute('class', 'container enable-click');
-        ANIMATION.cartas.childNodes[meio].lastChild.previousSibling.setAttribute('class', 'wrap-image card-padding animated pulse infinite');
+        document.querySelector('.main-container').setAttribute('class', 'main-container container-fluid py-4');
+        ANIMATION.cartas.childNodes[meio].lastChild.previousSibling.setAttribute('class', 'card-padding animated pulse infinite');
         ANIMATION.cartas.childNodes[meio].lastChild.previousSibling.setAttribute('data-target', meio);
       }, 4500);
     }else {
       setTimeout(function() {
-          ANIMATION.cartas.firstChild.firstChild.setAttribute('class', 'wrap-image card-padding animated pulse infinite');
+          ANIMATION.cartas.firstChild.firstChild.setAttribute('class', 'card-padding animated pulse infinite');
       }, 500);
     }
 }
@@ -158,12 +162,12 @@ function obterNaipe(string) {
     if(ANIMATION.cartas.getAttribute('data-random')) {
         var cartaExiste = ANIMATION.cartas.getAttribute('data-random');
 
-        /* sempre que o número de cartas a serem exibidas for igual a 13 a possibilidade da
+        /* Sempre que o número de cartas a serem exibidas for igual a 13 ou a carta procurada for Ás a possibilidade da
            carta se encontrada será sempre verdadeira */
         var valor = +ANIMATION.cenario[1];
-        if(cartaExiste == 'false' && ANIMATION.cenario[0] != '13') {
+        if(cartaExiste == 'false' && ANIMATION.cenario[0] != 13 && valor != 14) {
           naipe.splice(valor-2, 1);
-          naipe.push(naipe[ANIMATION.cenario[0]]);
+          naipe.push(naipe[ANIMATION.cenario[0]-1]);
         }
 
         if(ANIMATION.cenario[3] == 'sequencial-d') {
@@ -196,7 +200,7 @@ function obterCenario() {
     ANIMATION.cartas.setAttribute('data-first', 0);
     ANIMATION.cartas.setAttribute('data-middle', Math.floor((cenario[0]-1)/2));
     ANIMATION.cartas.setAttribute('data-last', cenario[0]-1);
-    
+
     return cenario;
 }
 
@@ -221,7 +225,7 @@ function carregarJSON(callback) {
         console.log(request.response, request.status);
         callback(request.response);
     }
-    request.open('GET', 'https://api.myjson.com/bins/w5zk9');
+    request.open('GET', 'https://api.myjson.com/bins/92ucd');
     request.responseType = 'json';
     request.send();
 }
@@ -229,6 +233,8 @@ function carregarJSON(callback) {
 function callback(data) {
     ANIMATION.jsonObj = data;
 }
+
+carregarJSON(callback);
 
 function preload() {
   var naipes = ['espadas', 'paus', 'copas', 'ouro'];
@@ -245,5 +251,23 @@ function preload() {
 
 preload();
 
+// 1o argumento sempre será o timer e 2o sempre será o inicio e o 3o sempre será o fim
+function stopAnimation() {
+  var string = '', timer, start, end;
+  timer = arguments[0], start = arguments[1], end = arguments[2];
+  for( var i = 3; i < arguments.length; i++ ) {
+    string += arguments[i] + ' ';
+  }
 
-carregarJSON(callback);
+  setTimeout(function() {
+    for (var i = start; i < end; i++) {
+      if((ANIMATION.cartas.childNodes[i].firstChild.className.indexOf('hide') > 0)) {
+        ANIMATION.cartas.childNodes[i].firstChild.nextSibling.setAttribute('class', 'card-padding ' + string);
+      } else if(ANIMATION.cartas.childNodes[i].firstChild.className.indexOf('opacity') > 0) {
+        ANIMATION.cartas.childNodes[i].firstChild.setAttribute('class', 'card-padding ' + string);
+      } else if(!(ANIMATION.cartas.childNodes[i].firstChild.className.indexOf('pulse') > 0)) {
+          ANIMATION.cartas.childNodes[i].firstChild.setAttribute('class', 'card-padding ' + string);
+        }
+    }
+  },timer);
+}

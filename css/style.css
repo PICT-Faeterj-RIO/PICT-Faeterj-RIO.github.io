@@ -1,3 +1,4 @@
+/*
 *, ::after, ::before {
 	box-sizing: inherit !important;
 }
@@ -22,20 +23,25 @@ input {
 label {
 	font-size: 18px
 }
+*/
 
-#playing-cards {
-	display: block;
-	margin: 0 auto;
-	width: 400px
+.bt-border-radius {
+	border-radius: 10px;
+}
+
+.jumbotron {
+	padding: initial !important;
 }
 
 .card-padding {
 	padding: 16px
 }
 
+/*
 .card-size {
 	width: 68px !important
 }
+*/
 
 .cards {
 	display: table;
@@ -43,11 +49,15 @@ label {
 }
 
 .hide {
-	display: none
+	display: none !important;
 }
 
 .show {
 	display: inline-block !important
+}
+
+.visible {
+	display: block;
 }
 
 .wrap-image {
@@ -55,15 +65,23 @@ label {
 }
 
 .enable-click {
-	pointer-events:all;
+	pointer-events:all !important;
 }
 
 .disable-click {
-	pointer-events:none;
+	pointer-events:none !important;
 }
 
+/*
 .cards img {
 	vertical-align: baseline;;
+}
+*/
+
+.buttonBox {
+    position: absolute;
+    bottom:0;
+    right:0;
 }
 
 .opacity {
@@ -72,4 +90,32 @@ label {
 	-moz-filter: brightness(60%);
 	-o-filter: brightness(60%);
 	-ms-filter: brightness(60%);
+}
+
+.enable-select {
+	-webkit-touch-callout: all; /* iOS Safari */
+	-webkit-user-select: all; /* Safari */
+	-khtml-user-select: all; /* Konqueror HTML */
+	-moz-user-select: all; /* Firefox */
+	-ms-user-select: all; /* Internet Explorer/Edge */
+	user-select: all; /* Non-prefixed version, currently
+	supported by Chrome and Opera */
+}
+
+.disable-select {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+  supported by Chrome and Opera */
+}
+
+@media screen and (max-width: 768px) {
+  [data-notify="container"] {
+		max-width: inherit !important;
+		width: auto !important;
+		left: 20px !important;
+	}
 }

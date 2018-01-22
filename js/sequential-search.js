@@ -9,10 +9,12 @@ var sequential = {
     var i = +ANIMATION.cartas.getAttribute('data-index') || 0;
 
     var cartaVirada = document.createElement('img');
-    cartaVirada.setAttribute('src', ANIMATION.naipe[i][0]);
-    cartaVirada.setAttribute('class', 'card-padding card-size animated fadeIn');
-    cartaClicada.insertBefore(cartaVirada, cartaClicada.firstChild);
 
+    try {
+      cartaVirada.setAttribute('src', ANIMATION.naipe[i][0]);
+    } finally {
+      cartaVirada.setAttribute('class', 'card-padding animated fadeIn');
+      cartaClicada.insertBefore(cartaVirada, cartaClicada.firstChild);
       if (ANIMATION.naipe[i][1] == ANIMATION.cenario[1]) {
           feedback.found(cartaVirada);
       } else if (cartaClicada == ANIMATION.cartas.lastChild) {
@@ -24,5 +26,9 @@ var sequential = {
           feedback.continue(cartaVirada, cartaClicada);
       }
       ANIMATION.cartas.setAttribute('data-index', ++i);
+    }
+
+
+
   }
 }
