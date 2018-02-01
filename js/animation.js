@@ -53,66 +53,16 @@ function criarCartas() {
     stopAnimation(1500, 0, ANIMATION.cenario[0]);
 
     if(ANIMATION.cenario[3] === 'binaria') {
-      document.querySelector('.main-container').setAttribute('class', 'main-container container-fluid py-4');
-      setTimeout(function(){
-        for(var i = 0; i < ANIMATION.cenario[0]; i++) {
-            ANIMATION.cartas.removeChild(ANIMATION.cartas.firstChild);
-        }
-      }, 1500);
-
-      var cartaExiste = document.querySelector('.cards').getAttribute('data-random');
-      setTimeout(function(){
-        for(var i = 0; i < ANIMATION.cenario[0]; i++) {
-          var div = document.createElement('div');
-          var h6 = document.createElement('h6');
-          h6.setAttribute('class', 'text-center text-light');
-          var indice = document.createTextNode(i);
-          div.setAttribute('class', 'wrap-image');
-          var cartaOculta = document.createElement('img');
-          cartaOculta.setAttribute('src', ANIMATION.naipe[i][0]);
-          cartaOculta.setAttribute('class', 'card-padding fadeIn animated');
-          div.appendChild(cartaOculta);
-          h6.appendChild(indice);
-          div.appendChild(h6);
-          ANIMATION.cartas.appendChild(div);
-        }
-      },1500);
-
-      setTimeout(function(){
-        for(var i = 0; i < ANIMATION.cenario[0]; i++) {
-            ANIMATION.cartas.removeChild(ANIMATION.cartas.firstChild);
-        }
-      }, 4500);
-
-      setTimeout(function(){
-        for (var i = 0; i < ANIMATION.cenario[0]; i++) {
-          var div = document.createElement('div');
-          var h6 = document.createElement('h6');
-          h6.setAttribute('class', 'text-center text-light');
-          var indice = document.createTextNode(i);
-          div.setAttribute('class', 'wrap-image');
-          var cartaOculta = document.createElement('img');
-          cartaOculta.setAttribute('src', 'img/cards/back.png');
-          cartaOculta.setAttribute('class', ' card-padding fadeIn animated');
-          div.appendChild(cartaOculta);
-          h6.appendChild(indice);
-          div.appendChild(h6);
-          ANIMATION.cartas.appendChild(div);
-        }
-      }, 4500);
-
-      stopAnimation(5000, 0, ANIMATION.cenario[0]);
-
       var meio = Math.floor((ANIMATION.cenario[0]-1)/2);
       setTimeout(function() {
         document.querySelector('.main-container').setAttribute('class', 'main-container container-fluid py-4');
         ANIMATION.cartas.childNodes[meio].lastChild.previousSibling.setAttribute('class', 'card-padding animated pulse infinite');
         ANIMATION.cartas.childNodes[meio].lastChild.previousSibling.setAttribute('data-target', meio);
-      }, 4500);
+      }, 1000);
     }else {
       setTimeout(function() {
           ANIMATION.cartas.firstChild.firstChild.setAttribute('class', 'card-padding animated pulse infinite');
-      }, 500);
+      }, 1000);
     }
 }
 
@@ -288,7 +238,7 @@ function reset() {
     var p = document.createElement('p');
     p.setAttribute('class', 'text-muted font-weight-bold');
     //var texto = document.createTextNode('Crie um cenário e aberte o ' + '<i class="fa fa-play text-light border rounded py-1 px-1" aria-hidden="true"></i>' + ' para começar.');
-    p.innerHTML = 'Crie um cenário e aberte o ' + '<i class="fa fa-play text-light border rounded py-1 px-1" aria-hidden="true"></i>' + ' para começar.';
+    p.innerHTML = 'Você optou por ' + '<i class="fa fa-undo text-light border rounded py-1 px-1" aria-hidden="true"></i>' + ' o cenário.';
     divSecundaria.appendChild(p);
     divPrincipal.appendChild(divSecundaria);
     pendurar.push(divPrincipal);
