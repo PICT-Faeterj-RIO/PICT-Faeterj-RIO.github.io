@@ -1,58 +1,60 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset='utf-8'>
-		<title>Busca sequencial versus binária</title>
-		<link rel='stylesheet' href='css/style.css'>
-		<link rel='stylesheet' href='css/animate.css'>
-		<link rel='stylesheet' href='css/tabs.css'>
-		<link rel="stylesheet" href="highlight/styles/solarized-dark.css">
-		<link rel='stylesheet' href='css/bootstrap.min.css'>
-		<link rel='stylesheet' href='fonts/css/font-awesome.min.css'>
-	</head>
-	<body>
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-			<div class='container'>
-				<a class="navbar-brand" href="#">PICT-HTML5</a>
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+
+<head>
+    <meta charset='utf-8'>
+    <title>Busca sequencial versus binária</title>
+    <link rel='stylesheet' href='css/style.css'>
+    <link rel='stylesheet' href='css/animate.css'>
+    <link rel='stylesheet' href='css/tabs.css'>
+    <link rel="stylesheet" href="highlight/styles/solarized-dark.css">
+    <link rel='stylesheet' href='css/bootstrap.min.css'>
+    <link rel='stylesheet' href='fonts/css/font-awesome.min.css'>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class='container'>
+            <a class="navbar-brand" href="#">PICT-HTML5</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
-				<div class="collapse navbar-collapse navbar-right" id="navbarNav">
-					<ul class="navbar-nav ml-auto">
-						<li class="nav-item">
-							<a class="nav-link text-light" href="#">Quem somos</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link text-light" href="#">Documentação</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link text-light" href="#">Aplicativos</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link text-light" href="#">Ajuda</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</nav>
-		<div class="jumbotron jumbotron-fluid bg-white">
-  		<div class="container">
-				<div class="row">
-					<div class="col-auto mr-auto col"><img class="" src="img/detective.jpg"></div>
-					<div class="col-auto align-self-center">
-						<h3>Busca sequencial x binária</h3>
-						<hr style="border: 1px ridge black">
-					</div>
-				</div>
-  		</div>
-		</div>
-		<div class='main-container container-fluid pt-2 pb-5 disable-select' style="background-image: url('img/bg-binary.jpg');background-repeat: no-repeat;background-size: cover;min-height: 500px">
-			<div class="container">
-				<form class='' id='form'>
-					<div class="form-row py-2 rounded">
-						<div class="form-group col-auto mr-3">
-							<label class="text-dark font-weight-bold">Tamanho:</label><br>
-							<select id='size' class="form-control form-control-sm bg-light">
+            <div class="collapse navbar-collapse navbar-right" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="#">Quem somos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="#">Documentação</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="#">Aplicativos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="#">Ajuda</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="jumbotron jumbotron-fluid bg-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-auto mr-auto col"><img class="" src="img/detective.jpg"></div>
+                <div class="col-auto align-self-center">
+                    <h3>Busca sequencial x binária</h3>
+                    <hr style="border: 1px ridge black">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class='main-container container-fluid pt-2 pb-5 disable-select' style="background-image: url('img/bg-binary.jpg');background-repeat: no-repeat;background-size: cover;min-height: 500px">
+        <div class="container">
+            <form class='' id='form'>
+                <div class="form-row py-2 rounded">
+                    <div class="form-group col-auto mr-3">
+                        <label class="text-dark font-weight-bold">Tamanho:</label><br>
+                        <select id='size' class="form-control form-control-sm bg-light">
 								<option value='' disabled='' selected=''>Selecione o número de cartas</option>
 								<option value='4'>4</option>
 								<option value='5'>5</option>
@@ -65,12 +67,12 @@
 								<option value='12'>12</option>
 								<option value='13'>13</option>
 							</select>
-						</div>
-						<!--<label>Insira o número de cartas (4 a 13):</label><br>
+                    </div>
+                    <!--<label>Insira o número de cartas (4 a 13):</label><br>
 						<input type='text' id='size'>-->
-						<div class="form-group col-auto mr-3">
-							<label class="text-dark font-weight-bold">O que está procurando?</label><br>
-							<select id='searched-card' class="form-control form-control-sm bg-light">
+                    <div class="form-group col-auto mr-3">
+                        <label class="text-dark font-weight-bold">O que está procurando?</label><br>
+                        <select id='searched-card' class="form-control form-control-sm bg-light">
 								<option value='' disabled='' selected=''>O que está procurando?</option>
 								<option value='11' data-neighbor='rei'>Dama</option>
 								<option value='12' data-neighbor='valete'>Rei</option>
@@ -86,183 +88,186 @@
 								<option value='9'>9</option>
 								<option value='10'>10</option>
 							</select>
-						</div>
-						<div class="form-group col-auto mr-3">
-							<label class="text-dark font-weight-bold">Selecione o naipe:</label><br>
-							<select id='selected-suit' class="form-control form-control-sm bg-light">
+                    </div>
+                    <div class="form-group col-auto mr-3">
+                        <label class="text-dark font-weight-bold">Selecione o naipe:</label><br>
+                        <select id='selected-suit' class="form-control form-control-sm bg-light">
 								<option value=''  disabled='' selected=''>Selecione o naipe</option>
 								<option value='espadas'>Espadas</option>
 								<option value='paus'>Paus</option>
 								<option value='copas'>Copas</option>
 								<option value='ouro'>Ouro</option>
 							</select>
-						</div>
-						<div class="form-group col-auto mr-3">
-							<label class="text-dark font-weight-bold">Selecione o tipo de busca:</label><br>
-							<select id='type-of-search' class="form-control form-control-sm bg-light">
+                    </div>
+                    <div class="form-group col-auto mr-3">
+                        <label class="text-dark font-weight-bold">Selecione o tipo de busca:</label><br>
+                        <select id='type-of-search' class="form-control form-control-sm bg-light">
 								<option value='' disabled='' selected=''>Selecione o tipo de busca</option>
 								<option value='sequencial-o'>Sequencial ordenada</option>
 								<option value='sequencial-d'>Sequencial desordenada</option>
 								<option value='binaria'>Binária</option>
 							</select>
-						</div>
-						<div class="form-group col-auto">
-							<label class="text-dark font-weight-bold">Complexidade:</label><br>
-							<input class="form-control bg-light" value="" id="complexidade" disabled="disabled" type="text">
-						</div>
-					</div>
-				</form>
-			</div>
+                    </div>
+                    <div class="form-group col-auto">
+                        <label class="text-dark font-weight-bold">Complexidade:</label><br>
+                        <input class="form-control bg-light" value="" id="complexidade" disabled="disabled" type="text">
+                    </div>
+                </div>
+            </form>
+        </div>
 
-			<div class="tabs">
-				<ul class="container tab-links" style="margin-bottom:0">
-						<li id="tab1-link" class="active"><a href="#tab1">Entenda a lógica</a></li>
-						<li id="tab2-link"><a href="#tab2">Aprenda o código</a></li>
-						<li id="tab3-link"><a href="#tab3">Tente fazer!</a></li>
-				</ul>
-			<div class='container tab-content text-center bg-dark' style="min-height: 250px">
-			<div id="tab1" class='tab active cards'>
-				<div class="gig-text row mt-5">
-				<div class="col-12 mt-5">
-					<p class="text-muted font-weight-bold">Crie um cenário e aberte o  <i class="fa fa-play text-light border rounded py-1 px-1" aria-hidden="true"></i> para começar.</p>
-				</div>
-			</div>
-			</div>
-			<div id="tab2" class="tab disable-select">
-				<div class="gig-text row mt-5">
-				<div class="col-12 mt-5">
-					<p class="text-muted font-weight-bold">Crie um cenário e aberte o  <i class="fa fa-play text-light border rounded py-1 px-1" aria-hidden="true"></i> para começar.</p>
-				</div>
-			</div>
-				<pre class="sequentialFunc hide">
-					<code class="text-left c" style="background: inherit">
-						int buscaSequencial(int array[], int n, int m) {
-							int i;
-							for(i = 0; i < n; i++) {
-								if(array[i] == m) {
-									return i;
-								}
-							}
-							return -1;
-						}
-					</code>
-				</pre>
-				<pre class="sequentialFuncR hide">
-					<code class="text-left c" style="background: inherit">
-						int buscaSequencialRecursiva(int array[], int n, int m) {
-							if(n == 0)
-								return -1;
-							else if(array[n-1] == m)
-								return n-1;
-							else
-								return buscaSequencialRecursiva(array, n-1, m);
-						}
-					</code>
-				</pre>
-				<pre class="sequentialFuncO hide">
-					<code class="text-left c" style="background: inherit">
-						int buscaSequencialOrdenada(int array[], int n, int m) {
-							int i;
-							for(i = 0; i < n; i++) {
-								if(array[i] == m)
-									return i;
-								else if(array[i] > m)
-									return -1;
-							}
-							return -1;
-						}
-					</code>
-				</pre>
-				<pre class="sequentialFuncOR hide">
-					<code class="text-left c" style="background: inherit">
-						int buscaSequencialRecursivaOrdenada(int array[], int n, int m) {
-							if(n == 0 || array[n-1] > m)
-								return -1;
-							else if(array[n-1] == m)
-								return n-1;
-							else
-								return buscaSequencialRecursivaOrdenada(array, n-1, m);
-						}
-					</code>
-				</pre>
-				<pre class="binaryFunc hide">
-					<code class="text-left c" style="background: inherit">
-						int buscaBinaria(int array[], int n, int m) {
-							int first, middle, last;
-							first = 0; last = n-1;
-							while (first <= last) {
-								middle = (first + last)/2;
-								if (array[middle] == m) return middle;
-								if (array[middle] < m) first = middle + 1;
-								else last = middle - 1;
-							}
-							return -1;
-						}
-					</code>
-				</pre>
-				<pre class="binaryFuncR hide">
-					<code class="text-left c" style="background: inherit">
-						int buscaBinariaRecursiva (int array, first, last, m) {
-						   if (first > last) return -1;
-						   else {
-						      int middle = (first + last)/2;
-						      if (array[middle] == m) return middle;
-						      if (array[middle] < m)
-						         return buscaBinariaRecursiva (array, middle+1, last, m);
-						      else
-						         return buscaBinariaRecursiva (array, first, middle-1, m);
-						   }
-						}
-					</code>
-				</pre>
-				<div class="row mb-2 mr-2" style="position:relative">
-					<div class="col-xs-6">
-						<button type="button" class="btn btn-primary buttonBox hide">Versão recursiva</button>
-					</div>
-				</div>
-			</div>
-			<div id="tab3" class="tab">
-				<div class="gig-text-fairytale row mt-5">
-				<div class="col-12 mt-5">
-					<p class="text-muted font-weight-bold"><i class="fa fa-magic text-light" aria-hidden="true"></i> Ainda estamos trabalhando duro nessa funcionalidade...</p>
-				</div>
-			</div>
-			</div>
-			</div>
-		<div class="text-center mt-3">
-		<img class="bt-play bt-border-radius" src="img/bt-play.png">
-		<img class="bt-reset bt-border-radius" src="img/bt-reset.png">
-		<img class="bt-help bt-border-radius" src="img/bt-help.png">
-	</div>
-		</div>
-	</div>
-		<footer class="navbar navbar-default navbar-static-bottom">
-		  <div class="container">
-				<div class="nav-brand">
-		    <a class="font-weight-bold" href="#" target="_blank">FAETERJ-Rio, </a>
-				<a class="font-weight-bold" href="#" target="_self">PICT - Ferramentas Educacionais em HTML5</a>
-			</div>
-				<div class="row">
-					<div class="col ml-auto">
-						<a class="small mr-2 mx-2 " href="#">Documentação</a>
-						<a class="small mr-2" href="#">Github</a>
-						<a class="small mr-2 font-weight-bold" href="#"><i class="fa fa-envelope" aria-hidden="true"></i> Enviar feedback</a>
-					</div>
-				</div>
-		  </div>
-		</footer>
-	<script src="highlight/highlight.pack.js"></script>
-	<script>hljs.initHighlightingOnLoad();</script>
-	<script src='js/jquery-3.2.1.min.js'></script>
-	<script src='js/bootstrap.min.js'></script>
-	<script src='js/bootstrap-notify.min.js'></script>
-	<script src='assets/cards.json'></script>
-	<script src='js/feedback.js'></script>
-	<script src='js/sequential-search.js'></script>
-	<script src='js/binary-search.js'></script>
-	<script src='js/animation.js'></script>
-	<script src='js/tabs.js'></script>
-	<script src='js/snippet.js'></script>
-	</script>
-	</body>
+        <div class="tabs">
+            <ul class="container tab-links" style="margin-bottom:0">
+                <li id="tab1-link" class="active"><a href="#tab1">Entenda a lógica</a></li>
+                <li id="tab2-link"><a href="#tab2">Aprenda o código</a></li>
+                <li id="tab3-link"><a href="#tab3">Tente fazer!</a></li>
+            </ul>
+            <div class='container tab-content text-center bg-dark' style="min-height: 250px">
+                <div id="tab1" class='tab active cards'>
+                    <div class="gig-text row mt-5">
+                        <div class="col-12 mt-5">
+                            <p class="text-muted font-weight-bold">Crie um cenário e aberte o <i class="fa fa-play text-light border rounded py-1 px-1" aria-hidden="true"></i> para começar.</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="tab2" class="tab disable-select">
+                    <div class="gig-text row mt-5">
+                        <div class="col-12 mt-5">
+                            <p class="text-muted font-weight-bold">Crie um cenário e aberte o <i class="fa fa-play text-light border rounded py-1 px-1" aria-hidden="true"></i> para começar.</p>
+                        </div>
+                    </div>
+                    <pre class="sequentialFunc hide">
+					    <code class="text-left c" style="background: inherit">
+						    int buscaSequencial(int array[], int n, int m) {
+							    int i;
+							    for(i = 0; i < n; i++) {
+								    if(array[i] == m) {
+									    return i;
+								    }
+							    }
+							    return -1;
+						    }
+					    </code>
+				    </pre>
+                    <pre class="sequentialFuncR hide">
+				        <code class="text-left c" style="background: inherit">
+						    int buscaSequencialRecursiva(int array[], int n, int m) {
+							    if(n == 0)
+								    return -1;
+							    else if(array[n-1] == m)
+								    return n-1;
+							    else
+								    return buscaSequencialRecursiva(array, n-1, m);
+						    }
+					    </code>
+				    </pre>
+                    <pre class="sequentialFuncO hide">
+				        <code class="text-left c" style="background: inherit">
+						    int buscaSequencialOrdenada(int array[], int n, int m) {
+							    int i;
+							    for(i = 0; i < n; i++) {
+								    if(array[i] == m)
+									    return i;
+								    else if(array[i] > m)
+									    return -1;
+							    }
+							    return -1;
+						    }
+					    </code>
+				    </pre>
+                    <pre class="sequentialFuncOR hide">
+				        <code class="text-left c" style="background: inherit">
+						    int buscaSequencialRecursivaOrdenada(int array[], int n, int m) {
+							    if(n == 0 || array[n-1] > m)
+								    return -1;
+							    else if(array[n-1] == m)
+								    return n-1;
+							    else
+								    return buscaSequencialRecursivaOrdenada(array, n-1, m);
+						    }
+					    </code>
+				    </pre>
+                    <pre class="binaryFunc hide">
+				        <code class="text-left c" style="background: inherit">
+						    int buscaBinaria(int array[], int n, int m) {
+							    int first, middle, last;
+							    first = 0; last = n-1;
+							    while (first <= last) {
+								    middle = (first + last)/2;
+								    if (array[middle] == m) return middle;
+								    if (array[middle] < m) first = middle + 1;
+								    else last = middle - 1;
+							    }
+							    return -1;
+						    }
+					    </code>
+				    </pre>
+                    <pre class="binaryFuncR hide">
+				        <code class="text-left c" style="background: inherit">
+						    int buscaBinariaRecursiva (int array, first, last, m) {
+						        if (first > last) return -1;
+						        else {
+						            int middle = (first + last)/2;
+						            if (array[middle] == m) return middle;
+						            if (array[middle] < m)
+						                return buscaBinariaRecursiva (array, middle+1, last, m);
+						            else
+						                return buscaBinariaRecursiva (array, first, middle-1, m);
+						        }
+						    }
+					    </code>
+				    </pre>
+            <div class="row mb-2 mr-2" style="position:relative">
+            	<div class="col-xs-6">
+            		<button type="button" class="btn btn-primary buttonBox hide">Versão recursiva</button>
+            	</div>
+            </div>
+	            </div>
+                <div id="tab3" class="tab">
+                    <div class="gig-text-fairytale row mt-5">
+                        <div class="col-12 mt-5">
+                            <p class="text-muted font-weight-bold"><i class="fa fa-magic text-light" aria-hidden="true"></i> Ainda estamos trabalhando duro nessa funcionalidade...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-3">
+                <img class="bt-play bt-border-radius" src="img/bt-play.png">
+                <img class="bt-reset bt-border-radius" src="img/bt-reset.png">
+                <img class="bt-help bt-border-radius" src="img/bt-help.png">
+            </div>
+        </div>
+    </div>
+    <footer class="navbar navbar-default navbar-static-bottom">
+        <div class="container">
+            <div class="nav-brand">
+                <a class="font-weight-bold" href="#" target="_blank">FAETERJ-Rio, </a>
+                <a class="font-weight-bold" href="#" target="_self">PICT - Ferramentas Educacionais em HTML5</a>
+            </div>
+            <div class="row">
+                <div class="col ml-auto">
+                    <a class="small mr-2 mx-2 " href="#">Documentação</a>
+                    <a class="small mr-2" href="#">Github</a>
+                    <a class="small mr-2 font-weight-bold" href="#"><i class="fa fa-envelope" aria-hidden="true"></i> Enviar feedback</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="highlight/highlight.pack.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script>
+    <script src='js/jquery-3.2.1.min.js'></script>
+    <script src='js/bootstrap.min.js'></script>
+    <script src='js/bootstrap-notify.min.js'></script>
+    <script src='assets/cards.json'></script>
+    <script src='js/feedback.js'></script>
+    <script src='js/sequential-search.js'></script>
+    <script src='js/binary-search.js'></script>
+    <script src='js/animation.js'></script>
+    <script src='js/tabs.js'></script>
+    <script src='js/snippet.js'></script>
+    </script>
+</body>
+
 </html>

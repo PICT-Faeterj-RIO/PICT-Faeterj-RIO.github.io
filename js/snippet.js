@@ -4,6 +4,7 @@ document.querySelector('.buttonBox').addEventListener('click', chooseSnippet, fa
 
 var tab2 = document.querySelector('#tab2');
 var gitText = document.querySelector('#tab2 .gig-text');
+var resetText = document.getElementsByClassName('reset-message');
 var sequentialFunc = document.querySelector('.sequentialFunc');
 var sequentialFuncO = document.querySelector('.sequentialFuncO');
 var binaryFunc = document.querySelector('.binaryFunc');
@@ -14,6 +15,8 @@ var sequentialFuncOR = document.querySelector('.sequentialFuncOR');
 var binaryFuncR = document.querySelector('.binaryFuncR');
 
 function chooseSnippet(evt) {
+	console.log(resetText[0]);
+
 	var target = evt.target || evt.srcElement;
 	var main = document.querySelector('#tab2');
 
@@ -62,11 +65,13 @@ function chooseSnippet(evt) {
 			sequentialFuncO.setAttribute('class', 'sequentialFuncO hide');
 			binaryFunc.setAttribute('class', 'sequentialFunc visible');
 			complexidade.setAttribute('value', 'Θ(log2 n)');
+			main.removeChild(resetText[0]);
 		}
 	} else if (ANIMATION.cenario[3] == 'sequencial-o') {
 		try {
 			main.removeChild(gitText);
 		} finally {
+
 			buttonBox.setAttribute('class', 'btn btn-primary buttonBox show');
 			binaryFuncR.setAttribute('class', 'binaryFuncR hide');
 			binaryFunc.setAttribute('class', 'binaryFunc hide');
@@ -74,6 +79,7 @@ function chooseSnippet(evt) {
 			sequentialFunc.setAttribute('class', 'sequentialFunc hide');
 			sequentialFuncO.setAttribute('class', 'sequentialFuncO visible');
 			complexidade.setAttribute('value', 'O(n)');
+			main.removeChild(resetText[0]);
 		}
 	} else if(ANIMATION.cenario[3] == 'sequencial-d') {
 		try {
@@ -86,6 +92,7 @@ function chooseSnippet(evt) {
 			sequentialFuncO.setAttribute('class', 'sequentialFuncO hide');
 			sequentialFunc.setAttribute('class', 'sequentialFunc visible');
 			complexidade.setAttribute('value', 'O(n)');
+			main.removeChild(resetText[0]);
 		}
 	}
 }

@@ -225,14 +225,29 @@ function stopAnimation() {
 document.querySelector('.bt-reset').addEventListener('click', reset, false);
 
 function reset() {
-  $('#form').trigger("reset");
 
-  document.querySelector('#complexidade').value = '';
+  /*if(ANIMATION.cartas.getAttribute('data-random') == null)
+    return false;
+
+  if(ANIMATION.cartas.getAttribute('data-redefine'))
+    return false;
+  */
+
+  console.log(ANIMATION.cenario, 'oi');
+  if(typeof ANIMATION.cenario == 'undefined' || ANIMATION.cenario[4] == null)
+    return false;
+
+  $('#form').trigger("reset");   // limpa o formulário
+
+  document.querySelector('#complexidade').setAttribute('value', '');
+
+  ANIMATION.cenario = [];   // limpa o cenário anterior
 
   var pendurar = [];
+
   for(var i = 0; i < 2; i++) {
     var divPrincipal = document.createElement('div');
-    divPrincipal.setAttribute('class', 'gig-text row mt-5 disable-click');
+    divPrincipal.setAttribute('class', 'row mt-5 reset-message disable-click');
     var divSecundaria = document.createElement('div');
     divSecundaria.setAttribute('class', 'col-12 mt-5');
     var p = document.createElement('p');
@@ -247,11 +262,25 @@ function reset() {
   while(ANIMATION.cartas.firstChild) {
     ANIMATION.cartas.removeChild(ANIMATION.cartas.firstChild);
   }
+
   ANIMATION.cartas.appendChild(pendurar[0]);
 
-  while(document.querySelector('#tab2').firstChild) {
-    document.querySelector('#tab2').removeChild(document.querySelector('#tab2').firstChild);
+  var totalSnippet = document.querySelector('#tab2').childNodes.length;
+  var tab2 = document.querySelector('#tab2');
+
+  for(var i = 0; i < totalSnippet; i++) {
+    if(typeof tab2.childNodes[i].className != 'undefined' && tab2.childNodes[i].className.indexOf('visible') > 0) {
+      tab2.childNodes[i].classList.remove('visible');
+      tab2.childNodes[i].className += ' hide';
+    }
   }
+
+  var button = document.querySelector('#tab2 .buttonBox');
+  button.classList.remove('show');
+  button.className += ' hide';
+
   document.querySelector('#tab2').appendChild(pendurar[1]);
+
+  ANIMATION.cartas.setAttribute('data-redefine', 'true');
 
 }
