@@ -117,6 +117,16 @@
         </div>
 
         <div class="tabs">
+          <div class="btn-group dropdown ml-4" style="margin-bottom: -2px">
+              <button class="btn btn-dark dropdown-toggle font-weight-bold" style="padding: 9px 15px" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Selecione uma opção <span class="caret"></span>
+              </button>
+          <div class="dropdown-menu tab-links " aria-labelledby="dropdownMenuButton">
+              <li id="tab1-link" class="active cancel-property-li"><a class="dropdown-item bg-white text-dark cancel-property-a" href="#tab1">Entenda a lógica</a></li>
+              <li id="tab2-link" class="cancel-property-li"><a class="dropdown-item cancel-property-a" href="#tab2">Aprenda o código</a></li>
+              <li id="tab3-link" class="cancel-property-li"><a class="dropdown-item cancel-property-a" href="#tab3">Tente fazer!</a></li>
+          </div>
+        </div>
             <ul class="container tab-links" style="margin-bottom:0">
                 <li id="tab1-link" class="active"><a href="#tab1">Entenda a lógica</a></li>
                 <li id="tab2-link"><a href="#tab2">Aprenda o código</a></li>
@@ -258,6 +268,7 @@
         hljs.initHighlightingOnLoad();
     </script>
     <script src='js/jquery-3.2.1.min.js'></script>
+    <script src='js/popper.min.js'></script>
     <script src='js/bootstrap.min.js'></script>
     <script src='js/bootstrap-notify.min.js'></script>
     <script src='assets/cards.json'></script>
@@ -267,6 +278,11 @@
     <script src='js/animation.js'></script>
     <script src='js/tabs.js'></script>
     <script src='js/snippet.js'></script>
+    <script>
+    $(".dropdown-menu li a").click(function(){
+var selText = $(this).text();
+$(this).parents('.btn-group').find('.dropdown-toggle').html(selText+' <span class="caret"></span>');
+});
     </script>
 </body>
 
