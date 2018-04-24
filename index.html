@@ -3,7 +3,7 @@
 
 <head>
     <meta charset='utf-8'>
-    <title>Busca sequencial versus binária</title>
+    <title>PICT - Busca sequencial versus binária</title>
     <link rel='stylesheet' href='css/style.css'>
     <link rel='stylesheet' href='css/animate.css'>
     <link rel='stylesheet' href='css/tabs.css'>
@@ -15,23 +15,23 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class='container'>
-            <a class="navbar-brand" href="#">PICT-HTML5</a>
+            <a class="navbar-brand" href="index.html">PICT-HTML5</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
             <div class="collapse navbar-collapse navbar-right" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="#">Quem somos</a>
+                        <a class="nav-link text-light" href="quemsomos.html">Quem somos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-light" href="#">Documentação</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="#">Aplicativos</a>
+                        <a class="nav-link text-light" href="aplicativos.html">Aplicativos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="#">Ajuda</a>
+                        <a class="nav-link text-light" href="saibamais.html">Ajuda</a>
                     </li>
                 </ul>
             </div>
@@ -40,7 +40,7 @@
     <div class="jumbotron jumbotron-fluid bg-white">
         <div class="container">
             <div class="row">
-                <div class="col-auto mr-auto col"><img class="" src="img/detective.jpg"></div>
+                <div class="col-auto mr-auto col"><img class="" src="img/logo.jpg"></div>
                 <div class="col-auto align-self-center">
                     <h3>Busca sequencial x binária</h3>
                     <hr style="border: 1px ridge black">
@@ -187,13 +187,13 @@
 				    </pre>
                     <pre class="sequentialFuncOR hide">
 				        <code class="text-left c" style="background: inherit">
-						    int buscaSequencialRecursivaOrdenada(int array[], int n, int m) {
+						    int buscaSequencialOrdenadaRecursiva(int array[], int n, int m) {
 							    if(n == 0 || array[n-1] > m)
 								    return -1;
 							    else if(array[n-1] == m)
 								    return n-1;
 							    else
-								    return buscaSequencialRecursivaOrdenada(array, n-1, m);
+								    return buscaSequencialOrdenadaRecursiva(array, n-1, m);
 						    }
 					    </code>
 				    </pre>
@@ -244,20 +244,20 @@
             <div class="text-center mt-3">
                 <img class="bt-play bt-border-radius" src="img/bt-play.png">
                 <img class="bt-reset bt-border-radius" src="img/bt-reset.png">
-                <img class="bt-help bt-border-radius" src="img/bt-help.png">
+                <a href="saibamais.html" target="_blank"><img class="bt-help bt-border-radius" src="img/bt-help.png"></a>
             </div>
         </div>
     </div>
     <footer class="navbar navbar-default navbar-static-bottom">
         <div class="container">
             <div class="nav-brand">
-                <a class="font-weight-bold" href="#" target="_blank">FAETERJ-Rio, </a>
+                <a class="font-weight-bold" href="http://www.faeterj-rio.edu.br/" target="_blank">FAETERJ-Rio, </a>
                 <a class="font-weight-bold" href="#" target="_self">PICT - Ferramentas Educacionais em HTML5</a>
             </div>
             <div class="row">
                 <div class="col ml-auto">
                     <a class="small mr-2 mx-2 " href="#">Documentação</a>
-                    <a class="small mr-2" href="#">Github</a>
+                    <a class="small mr-2" href="https://github.com/PICT-Faeterj-RIO" target="_blank">Github</a>
                     <a class="small mr-2 font-weight-bold" href="#"><i class="fa fa-envelope" aria-hidden="true"></i> Enviar feedback</a>
                 </div>
             </div>

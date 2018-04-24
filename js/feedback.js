@@ -5,7 +5,9 @@ var feedback = {
       setTimeout(function() {
         $.notify({
             icon: 'fa fa-check',
-            message: 'Carta encontrada :), substituir por uma explicação didática ...'
+            message: 'Carta encontrada ' + feedback.complexidade() + ' <strong>Saiba mais</strong>',
+            url: './saibamais.html',
+            target: '_blank'
         }, {
           type: 'success',
           mouse_over: 'pause'
@@ -23,7 +25,9 @@ var feedback = {
       }, 1500);
       $.notify({
           icon: 'fa fa-exclamation-triangle',
-          message: 'Carta não foi encontrada :/, substituir por uma explicação didática ...'
+          message: 'Carta não foi encontrada :/ <strong>Saiba mais</strong>',
+          url: './saibamais.html',
+          target: '_blank'
       }, {
         type: 'danger',
         mouse_over: 'pause'
@@ -37,8 +41,8 @@ var feedback = {
       setTimeout(function() {
         $.notify({
             icon: 'fa fa-info',
-            message: 'Não é necessário continuar, pois ' + i + ' é maior do que a carta procurada :/, substituir por uma explicação didática ... <strong>Saiba mais</strong>',
-            url: 'https://github.com/mouse0270/bootstrap-notify',
+            message: 'Não é necessário continuar, pois ' + i + ' é maior do que a carta procurada :/ <strong>Saiba mais</strong>',
+            url: './saibamais.html',
             target: '_blank'
         }, {
           type: 'warning',
@@ -69,10 +73,22 @@ var feedback = {
     });
   },
 
+  failedToReset: function() {
+    $.notify({
+        icon: 'fa fa-exclamation-triangle',
+        message: 'Você precisa criar um cenário para só então pode desfazê-lo.'
+    }, {
+      type: 'danger',
+      mouse_over: 'pause'
+    });
+  },
+
   alreadyFound: function() {
     $.notify({
         icon: 'fa fa-info',
-        message: 'Carta já foi encontrada, tente outra busca... substituir por uma explicação didática ...'
+        message: 'Carta já foi encontrada, tente uma nova busca... <strong>Saiba mais</strong>',
+        url: './saibamais.html',
+        target: '_blank'
     }, {
       type: 'warning',
       mouse_over: 'pause'
@@ -82,7 +98,9 @@ var feedback = {
   neverFound: function() {
     $.notify({
         icon: 'fa fa-frown-o',
-        message: 'Carta não foi encontrada :/, substituir por uma explicação didática ...'
+        message: 'Carta não foi encontrada :/ <strong>Saiba mais</strong>',
+        url: './saibamais.html',
+        target: '_blank'
     }, {
       type: 'danger',
       mouse_over: 'pause'
@@ -92,13 +110,46 @@ var feedback = {
   isSequential: function() {
     $.notify({
         icon: 'fa fa-exclamation-triangle',
-        message: 'Oops, lembre-se que a busca é sequencial ;), substituir por uma explicação didática ... <strong>Saiba mais</strong>',
-        url: 'https://github.com/mouse0270/bootstrap-notify',
+        message: 'Oops, lembre-se que a busca é sequencial ;) <strong>Saiba mais</strong>',
+        url: './saibamais.html',
         target: '_blank'
     }, {
       type: 'danger',
       mouse_over: 'pause',
     });
+  },
+
+  isBinary: function() {
+    $.notify({
+        icon: 'fa fa-exclamation-triangle',
+        message: 'Oops, lembre-se que a busca é binária ;) <strong>Saiba mais</strong>',
+        url: './saibamais.html',
+        target: '_blank'
+    }, {
+      type: 'danger',
+      mouse_over: 'pause',
+    });
+  },
+
+  complexidade: function() {
+    var contexto = feedback.pegarContexto();
+    var complexidade;
+    if(ANIMATION.cenario[3] != 'binaria') {
+      complexidade = contexto[3] == 1 ? 'no melhor caso O(1) ;)' : contexto[3] == ANIMATION.cenario[0] ? 'no pior caso O(n)' : '';
+    } else {
+      complexidade = ANIMATION.cenario[0]-1 == contexto[2] && contexto[4]  ? 'no melhor caso O(1) ;)' : '';
+    }
+    return complexidade;
+  },
+
+  pegarContexto: function() {
+      var indiceAtual = +ANIMATION.cartas.getAttribute('data-index');
+      var inicio = +ANIMATION.cartas.getAttribute('data-first');
+      var meio = +ANIMATION.cartas.getAttribute('data-middle');
+      var fim = +ANIMATION.cartas.getAttribute('data-last');
+      var achou = ANIMATION.cartas.getAttribute('data-found');
+      var contexto = [inicio, meio, fim, indiceAtual, achou];
+      return contexto;
   }
 
 }

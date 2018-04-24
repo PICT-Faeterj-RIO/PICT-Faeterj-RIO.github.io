@@ -25,6 +25,10 @@ label {
 }
 */
 
+.square-inside {
+	list-style: square inside;
+}
+
 .bt-border-radius {
 	border-radius: 10px;
 }

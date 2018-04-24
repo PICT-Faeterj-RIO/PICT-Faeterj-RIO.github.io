@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <title>PICT - Saiba mais</title>
+    <link rel='stylesheet' href='css/style.css'>
+    <link rel='stylesheet' href='css/bootstrap.min.css'>
+    <link rel='stylesheet' href='fonts/css/font-awesome.min.css'>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class='container'>
+            <a class="navbar-brand" href="index.html">PICT-HTML5</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+            <div class="collapse navbar-collapse navbar-right" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="quemsomos.html">Quem somos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="#">Documentação</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="aplicativos.html">Aplicativos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="saibamais.html">Ajuda</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="jumbotron jumbotron-fluid bg-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-auto mr-auto col"><img class="" src="img/logo.jpg"></div>
+                <div class="col-auto align-self-center">
+                    <h3>Busca sequencial x binária</h3>
+                    <hr style="border: 1px ridge black">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bg-light my-5">
+      <div class="container py-3">
+        <span id="algoritmo">
+          <h4 class="text-light bg-dark">Ei você já sabe o que é um algoritmo né?</h4>
+          <p>Não? Ué!? Então se liga, você pode pensar que um algoritmo é uma sequência  finita e não ambígua
+            de passos que permite a solução de um problema de maneira automática e repetitiva. Tranquilo né?
+          </p>
+          <ul class="square-inside">Na seqüência de passos que soluciona um problema pode-se ter:
+            <li>Instruções diretas</li>
+            <li>Tomada de decisões (em função do contexto atual)</li>
+            <li>Repetição de passos (iteração)</li>
+          </ul>
+          <ul>Diferentes algoritmos podem levar a solução de um mesmo problema:
+            <ul class="square-inside">Exemplo: como se vestir de manhã?
+              <li>Primeiro colocar a calça ou a camisa?</li>
+              <li>Meia e Sapato?</li>
+            </ul>
+          </ul>
+          <p class="text-light bg-danger d-inline"><strong>Só tome cuidado para não colocar o sapato antes da calça ;) Não falte as aulas de algoritmo!</strong></p>
+          <h5 class="py-1">Algoritmo não é um conceito <u>restritamente</u> computacional</h5>
+            <p>Como você já deve ter sacado, utilizamos algoritmo em tudo que fazemos nas nossas vidas,
+              seja para nos vestir de manhã, ligar o carro ou fazer um bolo de chocolate estamos realizando
+              um algoritmo. Por isso precisamos ir mais a fundo e entender o que é um <strong>algoritmo computacional:</strong>
+            </p>
+            <p>Um algoritmo computacional opera sobre um conjunto de <strong>entradas</strong> (valores) de modo a gerar uma <strong>saída</strong> que seja útil para o usuário.</p>
+            <p>
+              <a class="btn btn-light border" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                Método para construção de algoritmos
+              </a>
+            </p>
+            <div class="collapse" id="collapseExample">
+              <div class="card card-body">
+                <ul class="square-inside">
+                  <li>Compreender completamente o problema a ser resolvido, destacando os pontos mais importantes e os objetos que o compõem.</li>
+                  <li>Definir os dados de entrada, ou seja, quais dados serão fornecidos e quais objetos fazem parte desse cenário-problema.</li>
+                  <li>Definir o processamento, ou seja, quais cálculos serão efetuados e quais restrições para esses cálculos.</li>
+                  <li>Definir os dados de saída, ou seja, quais dados serão gerados depois do processamento.</li>
+                  <li>Construir o algoritmo.</li>
+                  <li>Testar o algoritmo realizando simulações.</li>
+                <ul>
+              </div>
+            </div>
+        </span>
+        <span id="variaveis">
+          <h4 class="text-light bg-dark my-2">Entradas, saída e variavéis</h4>
+          <p>Nosso objetivo aqui não é explicar detalhadamente conceitos de programação
+            mas fornecer uma base para que você possa entender a abstração por trás desses conceitos
+          que muitas vezes tornam-se confusos.
+        </p>
+          <p>Você já teve a oportunidade de fazer arroz alguma vez na sua vida?
+            Calma ainda estamos falando de algoritmo, confie na gente você vai aprender algo com isso.
+          </p>
+          <p>Um <strong>problema</strong> muito comum <strong>durante</strong>
+            o cozimento do arroz é a necessidade de adicionar água <strong>caso</strong>
+              o arroz ainda não esteja soltinho e cozido <strong>caso contrário</strong>  podemos desligar o fogo.
+          </p>
+          <p>Não vamos subestimar a complexidade desse algoritmo, as coisas podem dar muito errado, acredite!
+            Vamos utilizar o <strong>método para construção de algoritmos</strong> citado acima para solucionar esse problema.
+          </p>
+          <ul class="square-inside"><strong>Solução</strong> <i class="fa fa-check text-success"></i>
+            <li>O primeiro passo aqui é compreender e definir o problema a ser resolvido nada de código
+              ainda: queremos um arroz soltinho e cozido esse é o nosso problema, certo?</li>
+            <li>Definir os dados de entrada: bom, sabemos que para fazer um arroz precisamos de ARROZ, água,
+              alho amassado, azeite ou óleo e  sal a gosto. <strong class="bg-warning">Os ingredientes são nossas <u>entradas</u></strong>.
+            </li>
+            <li>Definir o processamento, as restrições, <strong class="bg-warning">o que é necessário para alcançarmos o resultado desejado - <u>saída</u></strong>:
+              <ul class="square-inside">
+                <li>
+                  Precisaremos refogar o alho no azeite ou óleo.
+                </li>
+                <li>
+                  Colocar o arroz e deixar fritar por cerca de 30 segundos.
+                </li>
+                <li>
+                  Abaixar o fogo e deixar cozinhar até a água ter quase secado.
+                </li>
+                <li>
+                  Tampar a panela e sempre verificar a necessidade de adicionar mais água.
+                </li>
+              </ul>
+            </li>
+            <li>Construir o algoritmo em linguagem C.</li>
+            <li>Testá-lo.</li>
+          </ul>
+          <p>Mas o que são <strong><u>variavéis</u></strong>?</p>
+          <h4 class="text-center"><img src="img/sample/variavel.png" class="img-fluid"></h4>
+          <p>Na programação, uma <strong class="bg-warning">variável</strong> é um
+            objeto (uma posição ou endereço) que possui um <strong class="bg-warning">tipo</strong>
+            e capaz de reter e representar um <strong class="bg-warning">valor ou expressão</strong>. Enquanto as
+            variáveis só "existem" em tempo de execução, elas são associadas a "nomes",
+            chamados <strong class="bg-warning">identificadores ou rótulos</strong>, durante o tempo de desenvolvimento. In <i>Wikipedia</i>.
+          </p>
+          <span>Perceba que no exemplo da imagem você pode imaginar <strong>a caixa como uma variável</strong> que é do
+            <strong>tipo char</strong> (<a href="https://pt.wikibooks.org/wiki/Programar_em_C/Tipos_de_dados" target="_blank">saiba mais</a>)
+            e <strong>guarda o valor sal</strong> e que é <strong>identificada pelo mesmo nome</strong>.</span>
+        </span>
+        <span id="buscaSequencial">
+          <h4 class="text-light bg-dark my-2">Algoritmo de busca: busca sequencial</h4>
+          <p>A pesquisa ou busca sequencial é a técnica mais simples de realizar uma busca
+            em uma lista de dados desordenados. Ela visa procurar o valor através
+            de comparações sucessivas a partir do primeiro elemento (ou último) até
+             que se encontre o valor desejado ou até que os elementos da estrutura
+             se esgotem. Pode-se utilizar vetor, lista encadeada ou arquivo binário
+             como estrutura de dados.
+          </p>
+             <ul class="square-inside"><strong>Complexidade: <span class="bg-warning">O(n)</span></strong>
+               <li>Melhor caso: o elemento a ser buscado é encontrado logo na primeira tentativa da busca.</li>
+               <li>Caso médio: o elemento é encontrado após (N+1)/2 comparações.</li>
+               <li>Pior caso: o elemento a ser buscado encontra-se na última posição e são feitas N comparações
+                 ou não é encontrado e são feitas N+1 comparações, sendo N o número total de elementos.</li>
+             </ul>
+          <p>Ainda é possível implementar uma variação dessa busca com a <strong class="bg-warning">busca sequencial
+            ordernada</strong>: a diferença aqui é que como a estrutura está ordenada
+            caso o elemento não seja encontrado não há necessidade de ir até o final da estrutura.
+            Mas lembre-se quando já temos uma estrutura ordenada a implementação ideal para busca é
+            a <strong class="bg-warning">binária</strong>.
+          </p>
+        </span>
+        <span id="buscaBinaria">
+          <h4 class="text-light bg-dark my-2">Algoritmo de busca: busca binária</h4>
+          <p>A pesquisa ou busca binária é um algoritmo de busca que segue
+            o paradigma de divisão e conquista. Ela parte do pressuposto de que a estrutura
+            está ordenada e realiza sucessivas divisões do espaço de busca comparando
+            o elemento buscado (chave) com o elemento no meio da estrutura. Se o elemento
+            do meio da estrutura for a chave, a busca termina com sucesso. Caso contrário,
+            se o elemento do meio vier antes do elemento buscado, então a busca continua
+            na metade posterior da estrutura. E finalmente, se o elemento do meio vier depois
+            da chave, a busca continua na metade anterior da estrutura.
+          </p>
+             <ul class="square-inside"><strong>Complexidade: <span class="bg-warning">O(log n)</span></strong>
+               <li>Melhor caso: o elemento a ser buscado é encontrado logo na primeira tentativa da busca.</li>
+               <li>Caso médio: o elemento é encontrado após O(log n) comparações.</li>
+               <li>Pior caso: o elemento a ser buscado não é encontrado.</li>
+             </ul>
+             <p class="text-light bg-danger"><strong>Obs.: a análise de complexidade ou simplesmente complexidade considera
+               sempre o pior caso de um algoritmo, portanto a complexidade da busca binária é O(log n) que é o seu pior caso.</strong></p>
+        </span>
+      </div>
+    </div>
+    <footer class="navbar navbar-default navbar-static-bottom">
+        <div class="container">
+            <div class="nav-brand">
+                <a class="font-weight-bold" href="http://www.faeterj-rio.edu.br/" target="_blank">FAETERJ-Rio, </a>
+                <a class="font-weight-bold" href="#" target="_self">PICT - Ferramentas Educacionais em HTML5</a>
+            </div>
+            <div class="row">
+                <div class="col ml-auto">
+                    <a class="small mr-2 mx-2 " href="#">Documentação</a>
+                    <a class="small mr-2" href="https://github.com/PICT-Faeterj-RIO" target="_blank">Github</a>
+                    <a class="small mr-2 font-weight-bold" href="#"><i class="fa fa-envelope" aria-hidden="true"></i> Enviar feedback</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src='js/jquery-3.2.1.min.js'></script>
+    <script src='js/bootstrap.min.js'></script>
+</body>
+
+</html>

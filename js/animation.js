@@ -15,14 +15,23 @@ function exibirCartas(evt) {
     ANIMATION.cartas.removeAttribute('data-index');
     ANIMATION.cartas.removeAttribute('data-finished');
     if (ANIMATION.cenario[0] == '' || ANIMATION.cenario[1] == '' ||
-    ANIMATION.cenario[2] == '' || ANIMATION.cenario[3] == '') {
+    ANIMATION.cenario[2] == '' || ANIMATION.cenario[3] == '' || ANIMATION.cenario.length == 0) {
         feedback.required();
+        return false;
     } else {
         // Caso seja a primeira tentativa remove o texto inicial
         var textoInicial = document.querySelector('.gig-text');
         if (textoInicial != null) {
             textoInicial.remove();
         }
+
+        // Caso haja texto na segunda aba
+        var textoReset = document.querySelector('#reset-message');
+        console.log(textoReset, 'oi');
+        if (textoReset != null) {
+            textoReset.remove();
+        }
+
         // Caso não seja a primeira tentativa remove as cartas do cenario anterior
         while (ANIMATION.cartas.firstChild) {
             ANIMATION.cartas.removeChild(ANIMATION.cartas.firstChild);
@@ -145,6 +154,7 @@ function obterCenario() {
         .options[document.querySelector('#searched-card').selectedIndex].getAttribute('data-neighbor')
     ];
 
+    if(cenario[1] != 0) {ANIMATION.cartas.setAttribute('data-redefine', 'true');}
     getRandomInt(0, 2) === 0 ? ANIMATION.cartas.setAttribute('data-random', 'true') :
     ANIMATION.cartas.setAttribute('data-random', 'false');
     ANIMATION.cartas.setAttribute('data-first', 0);
@@ -225,17 +235,11 @@ function stopAnimation() {
 document.querySelector('.bt-reset').addEventListener('click', reset, false);
 
 function reset() {
-
-  /*if(ANIMATION.cartas.getAttribute('data-random') == null)
+  var nadaFeito = document.querySelector('.cards ').getAttribute('data-redefine');
+  if(!nadaFeito) {
+    feedback.failedToReset();
     return false;
-
-  if(ANIMATION.cartas.getAttribute('data-redefine'))
-    return false;
-  */
-
-  console.log(ANIMATION.cenario, 'oi');
-  if(typeof ANIMATION.cenario == 'undefined' || ANIMATION.cenario[4] == null)
-    return false;
+  }
 
   $('#form').trigger("reset");   // limpa o formulário
 
@@ -247,12 +251,12 @@ function reset() {
 
   for(var i = 0; i < 2; i++) {
     var divPrincipal = document.createElement('div');
-    divPrincipal.setAttribute('class', 'row mt-5 reset-message disable-click');
+    divPrincipal.setAttribute('class', 'row mt-5 reset-message disable-click visible');
+    divPrincipal.setAttribute('id', 'reset-message');
     var divSecundaria = document.createElement('div');
     divSecundaria.setAttribute('class', 'col-12 mt-5');
     var p = document.createElement('p');
     p.setAttribute('class', 'text-muted font-weight-bold');
-    //var texto = document.createTextNode('Crie um cenário e aberte o ' + '<i class="fa fa-play text-light border rounded py-1 px-1" aria-hidden="true"></i>' + ' para começar.');
     p.innerHTML = 'Você optou por ' + '<i class="fa fa-undo text-light border rounded py-1 px-1" aria-hidden="true"></i>' + ' o cenário.';
     divSecundaria.appendChild(p);
     divPrincipal.appendChild(divSecundaria);
@@ -267,11 +271,15 @@ function reset() {
 
   var totalSnippet = document.querySelector('#tab2').childNodes.length;
   var tab2 = document.querySelector('#tab2');
+  tab2.removeAttribute('data-recur');
 
   for(var i = 0; i < totalSnippet; i++) {
     if(typeof tab2.childNodes[i].className != 'undefined' && tab2.childNodes[i].className.indexOf('visible') > 0) {
       tab2.childNodes[i].classList.remove('visible');
       tab2.childNodes[i].className += ' hide';
+    }
+    if(typeof tab2.childNodes[i].className != 'undefined' && tab2.childNodes[i].className.indexOf('reset-message') > 0) {
+      tab2.childNodes[i].remove();
     }
   }
 
@@ -280,7 +288,5 @@ function reset() {
   button.className += ' hide';
 
   document.querySelector('#tab2').appendChild(pendurar[1]);
-
-  ANIMATION.cartas.setAttribute('data-redefine', 'true');
 
 }

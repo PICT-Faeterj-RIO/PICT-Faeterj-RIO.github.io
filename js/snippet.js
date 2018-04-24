@@ -15,7 +15,8 @@ var sequentialFuncOR = document.querySelector('.sequentialFuncOR');
 var binaryFuncR = document.querySelector('.binaryFuncR');
 
 function chooseSnippet(evt) {
-	console.log(resetText[0]);
+	if(ANIMATION.cenario[0] == 0)
+		return false;
 
 	var target = evt.target || evt.srcElement;
 	var main = document.querySelector('#tab2');

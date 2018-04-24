@@ -3,18 +3,6 @@ var binary = {
     // needs to be implemented
   },
 
-  message: function message(string) {
-    $.notify({
-        icon: 'fa fa-exclamation-triangle',
-        message: string + ' <strong>Saiba mais</strong>',
-        url: 'https://github.com/mouse0270/bootstrap-notify',
-        target: '_blank'
-    }, {
-      type: 'danger',
-      mouse_over: 'pause'
-    });
-  },
-
   search: function(cartaClicada) {
 
     var conjuntoCartas = document.querySelector('.cards');
@@ -33,7 +21,7 @@ var binary = {
     if(finalizado) {
       feedback.neverFound();
     } else if(alvo != meio && cartaEncontrada != 'true') {
-      binary.message('Oops, lembre-se que a busca é binária ;), substituir por uma explicação didática ...');
+      feedback.isBinary();
     } else if(meioNoNaipe > cartaProcurada) {
 
       var x = ANIMATION.cartas.childNodes.length;
@@ -68,7 +56,7 @@ var binary = {
 
       if(primeiro > ultimo) {
         ANIMATION.cartas.setAttribute('data-finished', 'true');
-        binary.message('Carta não encontrada');
+        feedback.notFound();
         ANIMATION.cartas.childNodes[novoMeio].lastChild.previousSibling.className = 'card-padding opacity';
       }
       setTimeout(function() {
@@ -109,7 +97,7 @@ var binary = {
 
       if(primeiro > ultimo) {
         ANIMATION.cartas.setAttribute('data-finished', 'true');
-        binary.message('Carta não encontrada');
+        feedback.notFound();
         ANIMATION.cartas.childNodes[novoMeio].lastChild.previousSibling.className = 'card-padding opacity';
       }
 
