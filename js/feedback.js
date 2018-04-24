@@ -115,7 +115,7 @@ var feedback = {
         target: '_blank'
     }, {
       type: 'danger',
-      mouse_over: 'pause',
+      mouse_over: 'pause'
     });
   },
 
@@ -127,8 +127,27 @@ var feedback = {
         target: '_blank'
     }, {
       type: 'danger',
-      mouse_over: 'pause',
+      mouse_over: 'pause'
     });
+  },
+
+  helper: function() {
+    $.notify({
+        icon: 'fa fa-info',
+        message: 'Este aplicativo tem como objetivo demonstrar o funcionamento da ' +
+        'busca sequencial e binária utilizando analogia com cartas do baralho. <strong>Saiba mais</strong>',
+        url: './saibamais.html',
+        target: '_blank'
+    }, {
+      type: 'info',
+      mouse_over: 'pause',
+      timer: 5000,
+      placement: {
+		      from: "bottom",
+		      align: "right"
+	   },
+    });
+    clearInterval(helper);
   },
 
   complexidade: function() {

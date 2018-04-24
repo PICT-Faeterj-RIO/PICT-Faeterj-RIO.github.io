@@ -290,3 +290,11 @@ function reset() {
   document.querySelector('#tab2').appendChild(pendurar[1]);
 
 }
+
+console.log('Testing', ANIMATION.cenario[0]);
+function instrucao() {
+    if(ANIMATION.cenario == 'undefined')
+      feedback.helper();
+}
+
+var helper = setInterval(instrucao, 5000);
